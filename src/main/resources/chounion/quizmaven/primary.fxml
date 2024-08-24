@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chounion.quizmaven.PrimaryController">
+  <children>
+    <AnchorPane fx:id="anchorPane" maxHeight="-1.0" maxWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="4.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" width="567.0" />
+            <Button fx:id="btnDeploySecondaryWindow" layoutX="736.0" layoutY="30.0" mnemonicParsing="false" onAction="#deploySecondaryWindow" text="-&gt;" />
+            <Button fx:id="btnQuestion1" layoutX="11.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleQuestion" text="1" />
+            <Label layoutX="11.0" layoutY="9.0" text="Preguntas:" />
+            <Button fx:id="rdb1" layoutX="15.0" layoutY="87.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Label layoutX="9.0" layoutY="63.0" text="Despliegue:" />
+            <Button fx:id="btnQuestion2" layoutX="44.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleQuestion" text="2" />
+            <Button fx:id="btnQuestion3" layoutX="78.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleQuestion" text="3" />
+            <Button fx:id="btnQuestion4" layoutX="113.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleQuestion" text="4" />
+            <Button fx:id="btnQuestion5" layoutX="150.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleQuestion" text="5" />
+            <Button fx:id="btnQuestion6" layoutX="188.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleQuestion" text="6" />
+            <Button fx:id="btnQuestion7" layoutX="224.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleQuestion" text="7" />
+            <Button fx:id="btnQuestion9" layoutX="289.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleQuestion" text="9" />
+            <Button fx:id="btnQuestion8" layoutX="256.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleQuestion" text="8" />
+            <Button fx:id="btnQuestion12" layoutX="397.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleQuestion" text="12" />
+            <Button fx:id="btnQuestion10" layoutX="320.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleQuestion" text="10" />
+            <Button fx:id="btnQuestion11" layoutX="359.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleQuestion" text="11" />
+            <Button fx:id="btnQuestion13" layoutX="436.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleQuestion" text="13" />
+            <Button fx:id="btnQuestion14" layoutX="476.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleQuestion" text="14" />
+            <Button fx:id="btnQuestion15" layoutX="516.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleQuestion" text="15" />
+            <Label layoutX="707.0" layoutY="9.0" text="Put2ndWindow: " />
+            <Button fx:id="rdb2" layoutX="46.0" layoutY="87.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb3" layoutX="81.0" layoutY="87.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb4" layoutX="118.0" layoutY="87.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb5" layoutX="156.0" layoutY="87.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb6" layoutX="192.0" layoutY="87.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb7" layoutX="224.0" layoutY="87.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb8" layoutX="257.0" layoutY="87.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb9" layoutX="293.0" layoutY="87.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb10" layoutX="330.0" layoutY="87.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb12" layoutX="404.0" layoutY="87.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb11" layoutX="366.0" layoutY="87.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb13" layoutX="441.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb14" layoutX="483.0" layoutY="87.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb15" layoutX="522.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Line endX="421.0" layoutX="150.0" layoutY="119.0" startX="-146.0" />
+            <Button fx:id="btnQuestion16" layoutX="8.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleQuestion" text="16" />
+            <Button fx:id="btnQuestion25" layoutX="322.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleQuestion" text="25" />
+            <Button fx:id="btnQuestion24" layoutX="287.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleQuestion" text="24" />
+            <Button fx:id="btnQuestion23" layoutX="253.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleQuestion" text="23" />
+            <Button fx:id="btnQuestion22" layoutX="221.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleQuestion" text="22" />
+            <Button fx:id="btnQuestion21" layoutX="185.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleQuestion" text="21" />
+            <Button fx:id="btnQuestion20" layoutX="147.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleQuestion" text="20" />
+            <Button fx:id="btnQuestion19" layoutX="112.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleQuestion" text="19" />
+            <Button fx:id="btnQuestion18" layoutX="75.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleQuestion" text="18" />
+            <Button fx:id="btnQuestion17" layoutX="41.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleQuestion" text="17" />
+            <Button fx:id="btnQuestion26" layoutX="359.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleQuestion" text="26" />
+            <Button fx:id="btnQuestion30" layoutX="516.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleQuestion" text="30" />
+            <Button fx:id="btnQuestion29" layoutX="476.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleQuestion" text="29" />
+            <Button fx:id="btnQuestion28" layoutX="435.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleQuestion" text="28" />
+            <Button fx:id="btnQuestion27" layoutX="398.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleQuestion" text="27" />
+            <Button fx:id="rdb29" layoutX="483.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb28" layoutX="443.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb27" layoutX="405.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb26" layoutX="366.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb25" layoutX="330.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb24" layoutX="294.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb23" layoutX="257.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb22" layoutX="224.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb21" layoutX="192.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb20" layoutX="156.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb19" layoutX="118.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb18" layoutX="82.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb17" layoutX="48.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb16" layoutX="15.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Button fx:id="rdb30" layoutX="523.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleDeploy" text="." />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="298.0" layoutX="6.0" layoutY="254.0" stroke="BLACK" strokeType="INSIDE" width="410.0" />
+            <Label layoutX="26.0" layoutY="226.0" text="Zona de pruebas">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="testLabel" layoutX="39.0" layoutY="454.0" text="Etiqueta de prueba" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="298.0" layoutX="450.0" layoutY="254.0" stroke="BLACK" strokeType="INSIDE" width="330.0" />
+            <Label layoutX="485.0" layoutY="226.0" text="Panel de control">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="74.0" layoutX="450.0" layoutY="254.0" stroke="BLACK" strokeType="INSIDE" width="127.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="298.0" layoutX="576.0" layoutY="255.0" stroke="BLACK" strokeType="INSIDE" width="205.0" />
+            <Label layoutX="609.0" layoutY="256.0" text="Administración de puntos" />
+            <Button fx:id="btnMoreBlue" layoutX="594.0" layoutY="301.0" mnemonicParsing="false" onAction="#moreBlue" text="+1" />
+            <Button fx:id="btnLessBlue" layoutX="644.0" layoutY="301.0" mnemonicParsing="false" onAction="#lessBlue" text="-1" />
+            <Label layoutX="589.0" layoutY="283.0" text="Equipo Azul" />
+            <Line endX="100.0" layoutX="679.0" layoutY="273.0" startX="-100.0" />
+            <Label layoutX="589.0" layoutY="334.0" text="Equipo Rojo" />
+            <Label layoutX="591.0" layoutY="383.0" text="Equipo Naranja" />
+            <Label layoutX="590.0" layoutY="440.0" text="Equipo Amarillo" />
+            <Button fx:id="btnMoreRed" layoutX="594.0" layoutY="355.0" mnemonicParsing="false" onAction="#moreRed" text="+1" />
+            <Button fx:id="btnMoreYellow" layoutX="594.0" layoutY="460.0" mnemonicParsing="false" onAction="#moreYellow" text="+1" />
+            <Button fx:id="btnMoreOrange" layoutX="594.0" layoutY="404.0" mnemonicParsing="false" onAction="#moreOrange" text="+1" />
+            <Button fx:id="btnLessYellow" layoutX="644.0" layoutY="460.0" mnemonicParsing="false" onAction="#lessYellow" text="-1" />
+            <Button fx:id="btnLessOrange" layoutX="644.0" layoutY="404.0" mnemonicParsing="false" onAction="#lessOrange" text="-1" />
+            <Button fx:id="btnLessRed" layoutX="644.0" layoutY="355.0" mnemonicParsing="false" onAction="#lessRed" text="-1" />
+            <Rectangle fx:id="RectangleImageView" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="181.0" layoutX="57.0" layoutY="265.0" stroke="BLACK" strokeType="INSIDE" width="316.0" />
+            <Button fx:id="btnChangeWallpaper" layoutX="459.0" layoutY="342.0" mnemonicParsing="false" onAction="#changeWallpaper" text="ChangeWalppaper" />
+            <Line endX="62.0" layoutX="514.0" layoutY="377.0" startX="-64.0" />
+            <StackPane fx:id="testMediaContainer" layoutX="56.0" layoutY="264.0" prefHeight="180.0" prefWidth="316.0">
+               <children>
+                  <ImageView fx:id="testImageView" fitHeight="181.0" fitWidth="315.0" pickOnBounds="true" preserveRatio="true" />
+                  <MediaView fx:id="testMediaView" fitHeight="180.0" fitWidth="312.0" />
+               </children>
+            </StackPane>
+            <Button fx:id="btnFullScreen" layoutX="457.0" layoutY="391.0" mnemonicParsing="false" onAction="#setFullScreen" text="Pantalla Completa" />
+            <Line endX="63.0" layoutX="513.0" layoutY="428.0" startX="-63.0" />
+            <Button fx:id="btnPauseVideo" layoutX="471.0" layoutY="434.0" mnemonicParsing="false" onAction="#pauseVideo" text="Pausar Vídeo" />
+            <Line endX="62.0" layoutX="514.0" layoutY="471.0" startX="-64.0" />
+            <Line endX="23.0" endY="141.0" layoutX="664.0" layoutY="411.0" startX="23.0" startY="-138.0" />
+            <Label fx:id="blueLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="719.0" layoutY="301.0" prefHeight="25.0" prefWidth="30.0" style="-fx-background-color: blue;" text="0" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelRed" alignment="CENTER" layoutX="720.0" layoutY="354.0" prefHeight="27.0" prefWidth="28.0" style="-fx-background-color: red;" text="0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelOrange" alignment="CENTER" layoutX="720.0" layoutY="403.0" prefHeight="27.0" prefWidth="28.0" style="-fx-background-color: orange;" text="0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelYellow" alignment="CENTER" layoutX="720.0" layoutY="457.0" prefHeight="27.0" prefWidth="28.0" style="-fx-background-color: yellow;" text="0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnResetPoints" layoutX="582.0" layoutY="510.0" mnemonicParsing="false" onAction="#resetPoints" prefHeight="25.0" prefWidth="101.0" text="ReiniciarPuntos" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="613.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Transicion%20para%20filmora/2024-06-21_1718983652457.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnCloseDeployMedia" layoutX="471.0" layoutY="279.0" mnemonicParsing="false" onAction="#closeMedia" text="Cerrar Media" />
+         </children></AnchorPane>
+  </children>
+</VBox>

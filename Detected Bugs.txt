@@ -1,0 +1,3 @@
+-tengo que crear un boton de pausa y reproducir para el visor de video
+
+Faltante:

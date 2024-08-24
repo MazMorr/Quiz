@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="rootStackPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chounion.quizmaven.SecondaryController">
+   <children>
+      <AnchorPane prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <ImageView fx:id="imgWallpaper" pickOnBounds="true" preserveRatio="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@../../../../../../../../blue-aesthetic-hollow-knight-djw.jpg" />
+               </image></ImageView>
+            <AnchorPane prefHeight="268.0" prefWidth="375.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                 
+                              <BarChart fx:id="bcRanking" alternativeRowFillVisible="false" categoryGap="15.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" prefHeight="268.0" prefWidth="375.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <xAxis>
+                      <CategoryAxis opacity="0.0" side="BOTTOM" tickMarkVisible="false" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis opacity="0.0" side="LEFT" tickLabelFill="WHITE" tickLength="5.0" upperBound="14.0" />
+                    </yAxis>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </BarChart>
+            
+                        <Label fx:id="rankingLabel" text="Ranking de Puntos" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="10.0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                        </Label>
+                  <Label fx:id="blueTeamDeployPoints" alignment="CENTER" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: blue;" text="0" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="15.0">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="redTeamDeployPoints" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: red;" text="0" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="70.0">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="orangeTeamDeployPoints" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: orange;" text="0" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="125.0">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="yellowTeamDeployPoints" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: yellow;" text="0" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="180.0">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane>
+               <children>
+                 
+                        <Label fx:id="deployLabel" text="Comenzamos en unos segundos..." textFill="WHITE" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="100.0">
+                     <font>
+                        <Font size="37.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Label>
+                 
+                        <VBox layoutY="496.0" prefHeight="204.0" prefWidth="496.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="496.0">
+                    
+                           <Label alignment="CENTER" text="Preguntas Disponibles:" textAlignment="CENTER" textFill="WHITE">
+                        <font>
+                           <Font size="38.0" />
+                        </font>
+                        <effect>
+                           <DropShadow />
+                        </effect>
+                     </Label>
+                     <GridPane hgap="10.0" prefHeight="35.0" prefWidth="416.0" vgap="10.0">
+                        <children>
+                           <Label fx:id="disponibleQuestion1" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="1" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion2" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="2" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion3" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="3" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion4" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="4" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion5" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="5" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion6" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="6" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion7" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="7" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion8" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="8" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion9" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="9" GridPane.columnIndex="8" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion10" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="10" GridPane.columnIndex="9" GridPane.rowIndex="0" />
+                        </children>
+                        <columnConstraints>
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints />
+                        </rowConstraints>
+                        <effect>
+                           <DropShadow />
+                        </effect>
+                     </GridPane>
+         
+                           <GridPane hgap="10" vgap="10">
+                        <children>
+                           <Label fx:id="disponibleQuestion11" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="11" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion12" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="12" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion13" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="13" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion14" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="14" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion15" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="15" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion16" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="16" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion17" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="17" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion18" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="18" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion19" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="19" GridPane.columnIndex="8" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion20" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="20" GridPane.columnIndex="9" GridPane.rowIndex="0" />
+                        </children>
+                        <columnConstraints>
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints />
+                        </rowConstraints>
+                        <effect>
+                           <DropShadow />
+                        </effect>
+                     </GridPane>
+         
+                           <GridPane hgap="10" prefHeight="35.0" prefWidth="444.0" vgap="10">
+                        <children>
+                           <Label fx:id="disponibleQuestion21" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="21" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion22" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="22" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion23" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="23" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion24" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="24" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion25" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="25" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion26" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="26" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion27" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="27" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion28" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="28" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion29" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="29" GridPane.columnIndex="8" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion30" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="30" GridPane.columnIndex="9" GridPane.rowIndex="0" />
+                        </children>
+                        <columnConstraints>
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                           <ColumnConstraints />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints />
+                        </rowConstraints>
+                        <effect>
+                           <DropShadow />
+                        </effect>
+                     </GridPane>
+                  </VBox>
+               </children>
+            </AnchorPane>
+           
+                  <StackPane fx:id="mediaContainer" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fx:id="deployImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                  <MediaView fx:id="deployMediaView" fitHeight="100.0" fitWidth="100.0" />
+               </children>
+            </StackPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
