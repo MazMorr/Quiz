@@ -302,6 +302,7 @@ public class PrimaryController {
             String fileContent = FileReader.readTextFile(textFilePath);
             secondaryController.setDeployLabel(fileContent);
             secondaryController.loadMedia(mediaPath);
+            secondaryController.setAnswerLabel(" ");
         });
     } 
     

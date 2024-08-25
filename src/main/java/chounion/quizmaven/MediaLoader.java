@@ -13,7 +13,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.application.Platform;
 
 public class MediaLoader {
-    
     public static void loadMedia(String relativePath, ImageView imageView, MediaView mediaView, StackPane mediaContainer, Consumer<MediaPlayer> mediaPlayerConsumer) {
         // Detener y limpiar cualquier reproducción anterior
         if (mediaView.getMediaPlayer() != null) {
@@ -53,8 +52,6 @@ public class MediaLoader {
             loadImage(relativePath, imageView, mediaContainer);
         } else if (videoFound) {
             loadVideo(relativePath, mediaView, mediaContainer, mediaPlayerConsumer);
-        } else {
-            showAlert("No se encontró ningún archivo multimedia en la ruta especificada.");
         }
     }
 
