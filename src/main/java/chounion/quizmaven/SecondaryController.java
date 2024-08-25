@@ -42,7 +42,8 @@ public class SecondaryController {
     @FXML private BarChart<String, Number> bcRanking;
     @FXML private Label[] disponibleQuestions = new Label[30];
     @FXML private Label blueTeamdeployPoints, redTeamDeployPoints, orangeTeamDeployPoints, yellowTeamDeployPoints; 
-
+    @FXML private Label answerLabel;
+    
     private MediaPlayer currentMediaPlayer;
     private PrimaryController primaryController;
     private boolean[] questionSelected = new boolean[30];
@@ -85,7 +86,6 @@ public class SecondaryController {
         yellowTeamDeployPoints = (Label) lookup("#yellowTeamDeployPoints");
     }
     
-    
     public void initializeQuestionLabels() {
         System.out.println("Iniciando labels de preguntas");
         for (int i = 1; i <= 30; i++) {
@@ -123,6 +123,10 @@ public class SecondaryController {
 
     public void setDeployLabel(String text) {
         this.deployLabel.setText(text);
+    }
+    
+    public void setAnswerLabel(String text){
+        this.answerLabel.setText(text);
     }
 
     public void setWallpaper(Image image) {

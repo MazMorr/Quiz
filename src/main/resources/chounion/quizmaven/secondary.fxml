@@ -71,7 +71,7 @@
             </AnchorPane>
             <AnchorPane>
                <children>
-                  <Label fx:id="answerLabel" textFill="WHITE" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="300.0">
+                  <Label fx:id="answerLabel" textFill="WHITE" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="300.0">
                      <font>
                         <Font size="35.0" />
                      </font>

@@ -1,8 +1,8 @@
 chounion\quizmaven\MediaLoader.class
+chounion\quizmaven\App.class
+chounion\quizmaven\FileReader.class
 chounion\quizmaven\RunMain.class
 chounion\quizmaven\FileWatcher.class
 chounion\quizmaven\PrimaryController.class
 module-info.class
 chounion\quizmaven\SecondaryController.class
-chounion\quizmaven\App.class
-chounion\quizmaven\FileReader.class

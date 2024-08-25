@@ -22,7 +22,7 @@
          <children>
             <ImageView fx:id="imgWallpaper" pickOnBounds="true" preserveRatio="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <image>
-                  <Image url="@../../../../../../../../blue-aesthetic-hollow-knight-djw.jpg" />
+                  <Image url="@Wallpaper/Wallpaper.jpg" />
                </image></ImageView>
             <AnchorPane prefHeight="268.0" prefWidth="375.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -71,6 +71,14 @@
             </AnchorPane>
             <AnchorPane>
                <children>
+                  <Label fx:id="answerLabel" textFill="WHITE" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="300.0">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Label>
                  
                         <Label fx:id="deployLabel" text="Comenzamos en unos segundos..." textFill="WHITE" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="100.0">
                      <font>

@@ -78,12 +78,21 @@ public class PrimaryController {
 
     private void initializeButtons() {
         for (int i = 0; i < 30; i++) {
-            String btnId = "#btnQuestion" + (i + 1);
+            String btnQuestionId = "#btnQuestion" + (i + 1);
             String rdbId = "#rdb" + (i + 1);
-            Button btn = (Button) anchorPane.lookup(btnId);
-            Button rdb = (Button) anchorPane.lookup(rdbId);
-            if (btn != null) btnQuestions[i] = btn;
-            if (rdb != null) rdbButtons[i] = rdb;
+
+            Button btnQuestion = (Button) anchorPane.lookup(btnQuestionId);
+            Button btnDeploy = (Button) anchorPane.lookup(rdbId);
+
+            if (btnQuestion != null) {
+                btnQuestion.setOnAction(this::handleQuestion); 
+                btnQuestions[i] = btnQuestion;
+            }
+
+            if (btnDeploy != null) {
+                btnDeploy.setOnAction(this::handleDeploy);
+                rdbButtons[i] = btnDeploy;
+            }
         }
     }
 
@@ -239,16 +248,48 @@ public class PrimaryController {
         if (secondaryController == null) {
             deploySecondaryWindow(null);
         }
+
         Object source = event.getSource();
         if (source instanceof Button) {
             Button button = (Button) source;
-            if (button.getId().startsWith("rdb")) {
+            // Verificar si el ID comienza con "rdb"
+            if (button.getId().startsWith("rdb")) { 
                 int deployNumber = Integer.parseInt(button.getId().replace("rdb", ""));
+                deployAnswer(deployNumber);
+            }
+        }   
+    }
+    
+    @FXML
+    void handleQuestion(ActionEvent event) {
+        if (secondaryController == null) {
+            deploySecondaryWindow(null);
+        }
+
+        Object source = event.getSource();
+        if (source instanceof Button) {
+            Button button = (Button) source;
+            // Verificar si el ID comienza con "btnQuestion"
+            if (button.getId().startsWith("btnQuestion")) { 
+                int deployNumber = Integer.parseInt(button.getId().replace("btnQuestion", ""));
                 deployQuestion(deployNumber);
             }
         }   
     }
-
+    
+    private void deployAnswer(int deployNumber){
+        Platform.runLater(() -> {
+            System.out.println("Desplegando respuesta: " + deployNumber);
+            secondaryController.resetAllQuestionLabelsExcept(deployNumber);
+            secondaryController.printQuestionStates();
+            secondaryController.setQuestionLabelOpacity(deployNumber, 0.0);
+            
+            String textFilePath = "/chounion/quizmaven/config/Question" + deployNumber + "/Respuesta" + deployNumber + ".txt";
+            String fileContent = FileReader.readTextFile(textFilePath);
+            secondaryController.setAnswerLabel(fileContent);
+        });
+    }
+    
     private void deployQuestion(int deployNumber) {
         Platform.runLater(() -> {
             System.out.println("Desplegando pregunta: " + deployNumber);
@@ -325,7 +366,7 @@ public class PrimaryController {
     private void reloadCurrentQuestion() {
         for (Button btn : btnQuestions) {
             if (btn != null && btn.isPressed()) {
-                handleQuestion(new ActionEvent(btn, null));
+                handleDeploy(new ActionEvent(btn, null));
                 break;
             }
         }
@@ -364,15 +405,5 @@ public class PrimaryController {
             return stage.isFocused() || stage.getScene().getRoot().isFocused();
         }
         return false;
-    }
-
-    @FXML
-    void handleQuestion(ActionEvent event) {
-        Button sourceButton = (Button) event.getSource();
-        int questionNumber = Integer.parseInt(sourceButton.getId().replace("btnQuestion", ""));
-        loadQuestion(
-                "/chounion/quizmaven/config/Question" + questionNumber + "/Pregunta" + questionNumber + ".txt",
-                "/chounion/quizmaven/config/Question" + questionNumber + "/media"
-        );
     }
 }
