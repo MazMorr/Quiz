@@ -20,7 +20,7 @@
    <children>
       <AnchorPane prefHeight="720.0" prefWidth="1280.0">
          <children>
-            <ImageView fx:id="imgWallpaper" pickOnBounds="true" preserveRatio="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ImageView fx:id="imgWallpaper" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <image>
                   <Image url="@Wallpaper/Wallpaper.jpg" />
                </image></ImageView>
@@ -71,46 +71,46 @@
             </AnchorPane>
             <AnchorPane>
                <children>
-                  <Label fx:id="answerLabel" textFill="WHITE" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="300.0">
+                  <Label fx:id="answerLabel" textFill="WHITE" AnchorPane.leftAnchor="370.0" AnchorPane.topAnchor="400.0">
                      <font>
-                        <Font size="35.0" />
+                        <Font size="50.0" />
                      </font>
                      <effect>
                         <DropShadow />
                      </effect>
                   </Label>
                  
-                        <Label fx:id="deployLabel" text="Comenzamos en unos segundos..." textFill="WHITE" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="100.0">
+                        <Label fx:id="deployLabel" text="Comenzamos en unos segundos..." textFill="WHITE" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="140.0">
                      <font>
-                        <Font size="37.0" />
+                        <Font size="60.0" />
                      </font>
                      <effect>
                         <DropShadow />
                      </effect>
                   </Label>
                  
-                        <VBox layoutY="496.0" prefHeight="204.0" prefWidth="496.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="496.0">
+                        <VBox layoutY="496.0" prefHeight="240.0" prefWidth="500.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="570.0">
                     
                            <Label alignment="CENTER" text="Preguntas Disponibles:" textAlignment="CENTER" textFill="WHITE">
                         <font>
-                           <Font size="38.0" />
+                           <Font size="45.0" />
                         </font>
                         <effect>
                            <DropShadow />
                         </effect>
                      </Label>
-                     <GridPane hgap="10.0" prefHeight="35.0" prefWidth="416.0" vgap="10.0">
+                     <GridPane hgap="10.0" prefHeight="40.0" prefWidth="416.0" vgap="10.0">
                         <children>
-                           <Label fx:id="disponibleQuestion1" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="1" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion2" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="2" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion3" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="3" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion4" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="4" GridPane.columnIndex="3" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion5" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="5" GridPane.columnIndex="4" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion6" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="6" GridPane.columnIndex="5" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion7" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="7" GridPane.columnIndex="6" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion8" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="8" GridPane.columnIndex="7" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion9" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="9" GridPane.columnIndex="8" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion10" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="10" GridPane.columnIndex="9" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion1" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="1" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion2" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="2" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion3" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="3" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion4" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="4" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion5" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="5" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion6" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="6" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion7" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="7" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion8" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="8" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion9" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="9" GridPane.columnIndex="8" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion10" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="10" GridPane.columnIndex="9" GridPane.rowIndex="0" />
                         </children>
                         <columnConstraints>
                            <ColumnConstraints />
@@ -134,16 +134,16 @@
          
                            <GridPane hgap="10" vgap="10">
                         <children>
-                           <Label fx:id="disponibleQuestion11" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="11" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion12" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="12" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion13" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="13" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion14" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="14" GridPane.columnIndex="3" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion15" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="15" GridPane.columnIndex="4" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion16" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="16" GridPane.columnIndex="5" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion17" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="17" GridPane.columnIndex="6" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion18" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="18" GridPane.columnIndex="7" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion19" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="19" GridPane.columnIndex="8" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion20" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="20" GridPane.columnIndex="9" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion11" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="11" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion12" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="12" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion13" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="13" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion14" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="14" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion15" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="15" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion16" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="16" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion17" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="17" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion18" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="18" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion19" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="19" GridPane.columnIndex="8" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion20" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="20" GridPane.columnIndex="9" GridPane.rowIndex="0" />
                         </children>
                         <columnConstraints>
                            <ColumnConstraints />
@@ -167,16 +167,16 @@
          
                            <GridPane hgap="10" prefHeight="35.0" prefWidth="444.0" vgap="10">
                         <children>
-                           <Label fx:id="disponibleQuestion21" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="21" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion22" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="22" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion23" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="23" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion24" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="24" GridPane.columnIndex="3" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion25" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="25" GridPane.columnIndex="4" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion26" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="26" GridPane.columnIndex="5" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion27" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="27" GridPane.columnIndex="6" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion28" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="28" GridPane.columnIndex="7" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion29" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="29" GridPane.columnIndex="8" GridPane.rowIndex="0" />
-                           <Label fx:id="disponibleQuestion30" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white;" text="30" GridPane.columnIndex="9" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion21" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="21" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion22" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="22" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion23" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="23" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion24" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="24" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion25" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="25" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion26" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="26" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion27" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="27" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion28" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="28" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion29" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="29" GridPane.columnIndex="8" GridPane.rowIndex="0" />
+                           <Label fx:id="disponibleQuestion30" alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: white; -fx-background-radius: 10%;" text="30" GridPane.columnIndex="9" GridPane.rowIndex="0" />
                         </children>
                         <columnConstraints>
                            <ColumnConstraints />
