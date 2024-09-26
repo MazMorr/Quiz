@@ -5,21 +5,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
-/**
- * JavaFX App
- */
 public class App extends Application {
 
     private static Scene scene;
+    private SecondaryController secondaryController;
+    
+    public void setSecondaryController(SecondaryController secondaryController) {
+        this.secondaryController = secondaryController;
+    }
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage primaryStage) throws IOException {
         scene = new Scene(loadFXML("primary"), 800, 600);
-        stage.setScene(scene);
-        stage.show();
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Cortana");
+        primaryStage.show();
     }
 
     static void setRoot(String fxml) throws IOException {

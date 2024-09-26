@@ -1,5 +1,4 @@
 package chounion.quizmaven;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,15 +25,12 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.scene.chart.BarChart;
-
 public class PrimaryController {
-
     // Declaración de variables
     private int blueTeam;
     private int orangeTeam;
     private int redTeam;
     private int yellowTeam;
-
     @FXML private ResourceBundle resources;
     @FXML private URL location;
     @FXML private AnchorPane anchorPane;
@@ -54,12 +50,10 @@ public class PrimaryController {
     @FXML private Label labelYellow, labelOrange, labelRed, blueLabel;
     @FXML private Button btnResetPoints;
     @FXML private BarChart<String, Number> bcRanking;
-
     private FileWatcher questionWatcher;
     private SecondaryController secondaryController;
     private MediaPlayer currentMediaPlayer;
     private Stage stage;
-
     // Métodos de inicialización
     @FXML
     void initialize() {
@@ -75,27 +69,22 @@ public class PrimaryController {
         }
         btnFullScreen.setText("Pantalla Completa");
     }
-
     private void initializeButtons() {
         for (int i = 0; i < 30; i++) {
             String btnQuestionId = "#btnQuestion" + (i + 1);
             String rdbId = "#rdb" + (i + 1);
-
             Button btnQuestion = (Button) anchorPane.lookup(btnQuestionId);
             Button btnDeploy = (Button) anchorPane.lookup(rdbId);
-
             if (btnQuestion != null) {
                 btnQuestion.setOnAction(this::handleQuestion); 
                 btnQuestions[i] = btnQuestion;
             }
-
             if (btnDeploy != null) {
                 btnDeploy.setOnAction(this::handleDeploy);
                 rdbButtons[i] = btnDeploy;
             }
         }
     }
-
     private void initializeFileWatcher() {
         try {
             Path basePath = Paths.get(getClass().getResource("/chounion/quizmaven/config").toURI());
@@ -105,92 +94,73 @@ public class PrimaryController {
             e.printStackTrace();
         }
     }
-
     private void initializeMediaComponents() {
         if (testMediaContainer == null) testMediaContainer = new StackPane();
         if (testMediaView == null) testMediaView = new MediaView();
         if (testImageView == null) testImageView = new ImageView();
-
         testImageView.fitWidthProperty().bind(testMediaContainer.widthProperty());
         testImageView.fitHeightProperty().bind(testMediaContainer.heightProperty());
         testMediaView.fitWidthProperty().bind(testMediaContainer.widthProperty());
         testMediaView.fitHeightProperty().bind(testMediaContainer.heightProperty());
-
         testMediaContainer.getChildren().clear();
         testMediaContainer.getChildren().addAll(testImageView, testMediaView);
     }
-
     // Métodos para manejar puntajes
-    @FXML
-    void lessBlue(ActionEvent event) {
+    @FXML void lessBlue(ActionEvent event) {
         if (blueTeam > 0) blueTeam--;
         updateScores();
     }
-
-    @FXML
-    void lessOrange(ActionEvent event) {
+    @FXML void lessOrange(ActionEvent event) {
         if (orangeTeam > 0) orangeTeam--;
         updateScores();
     }
-
     @FXML void lessRed(ActionEvent event) {
         if (redTeam > 0) redTeam--;
         updateScores();
     }
-
     @FXML void lessYellow(ActionEvent event) {
         if (yellowTeam > 0) yellowTeam--;
         updateScores();
     }
-
     @FXML void moreBlue(ActionEvent event) {
         if (blueTeam < 16) blueTeam++;
         updateScores();
     }
-
     @FXML void moreOrange(ActionEvent event) {
         if (orangeTeam < 16) orangeTeam++;
         updateScores();
     }
-
     @FXML void moreRed(ActionEvent event) {
         if (redTeam < 16) redTeam++;
         updateScores();
     }
-
     @FXML void moreYellow(ActionEvent event) {
         if (yellowTeam < 16) yellowTeam++;
         updateScores();
     }
-
     private void setLabelOrange(int value) {
         if (labelOrange != null) {
             labelOrange.setText(String.valueOf(value));
         }
     }
-
     private void setLabelRed(int value) {
         if (labelRed != null) {
             labelRed.setText(String.valueOf(value));
         }
     }
-
     private void setLabelYellow(int value) {
         if (labelYellow != null) {
             labelYellow.setText(String.valueOf(value));
         }
     }
-
     private void setBlueLabel(int value) {
         if (blueLabel != null) {
             blueLabel.setText(String.valueOf(value));
         }
     }
-
     private void setCurrentMediaPlayer(MediaPlayer mediaPlayer) {
         this.currentMediaPlayer = mediaPlayer;
     }
-
     // Método para actualizar puntajes
     private void updateScores() {
         // Actualizar las etiquetas en la ventana principal
@@ -198,57 +168,47 @@ public class PrimaryController {
         labelRed.setText(String.valueOf(redTeam));
         labelOrange.setText(String.valueOf(orangeTeam));
         labelYellow.setText(String.valueOf(yellowTeam));
-
         // Actualizar el gráfico en la ventana secundaria
         if (secondaryController != null) {
             secondaryController.updateTeamPoints(blueTeam, redTeam, orangeTeam, yellowTeam);
             secondaryController.updateBarChart(blueTeam, redTeam, orangeTeam, yellowTeam);
         }
     }
-
     @FXML
     void deploySecondaryWindow(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("secondary.fxml"));
             Parent root = loader.load();
             secondaryController = loader.getController();
-
             Stage stage = new Stage();
             Scene scene = new Scene(root);
-            
             stage.setScene(scene);
             stage.setOnCloseRequest(e -> {
             });
             stage.show();
-
             secondaryController.setPrimaryController(this);
             secondaryController.setupResponsiveLayout();
             secondaryController.setupKeyHandler();
             stage.setAlwaysOnTop(true);
-            
             // Mover la ventana secundaria al segundo monitor si está disponible
             secondaryController.moveToSecondaryScreen();
-            
             // Actualizar el gráfico de barras inicial
             secondaryController.updateBarChart(blueTeam, redTeam, orangeTeam, yellowTeam);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
     @FXML
     void closeMedia(ActionEvent event){
         if (secondaryController != null) {
             secondaryController.closeCurrentMedia();
         }
     }
-
     @FXML
     void handleDeploy(ActionEvent event) {
         if (secondaryController == null) {
             deploySecondaryWindow(null);
         }
-
         Object source = event.getSource();
         if (source instanceof Button) {
             Button button = (Button) source;
@@ -259,13 +219,11 @@ public class PrimaryController {
             }
         }   
     }
-    
     @FXML
     void handleQuestion(ActionEvent event) {
         if (secondaryController == null) {
             deploySecondaryWindow(null);
         }
-
         Object source = event.getSource();
         if (source instanceof Button) {
             Button button = (Button) source;
@@ -276,37 +234,31 @@ public class PrimaryController {
             }
         }   
     }
-    
     private void deployAnswer(int deployNumber){
         Platform.runLater(() -> {
             System.out.println("Desplegando respuesta: " + deployNumber);
             secondaryController.resetAllQuestionLabelsExcept(deployNumber);
             secondaryController.printQuestionStates();
             secondaryController.setQuestionLabelOpacity(deployNumber, 0.0);
-            
             String textFilePath = "/chounion/quizmaven/config/Question" + deployNumber + "/Respuesta" + deployNumber + ".txt";
             String fileContent = FileReader.readTextFile(textFilePath);
             secondaryController.setAnswerLabel(fileContent);
         });
     }
-    
     private void deployQuestion(int deployNumber) {
         Platform.runLater(() -> {
             System.out.println("Desplegando pregunta: " + deployNumber);
             secondaryController.resetAllQuestionLabelsExcept(deployNumber);
             secondaryController.printQuestionStates();
             secondaryController.setQuestionLabelOpacity(deployNumber, 0.0);
-
             String textFilePath = "/chounion/quizmaven/config/Question" + deployNumber + "/Pregunta" + deployNumber + ".txt";
-            String mediaPath = "/chounion/quizmaven/config/Question" + deployNumber + "/media";
+            String mediaPath = "/Question" + deployNumber + "/media"; // Ruta relativa a la carpeta media de la pregunta
             String fileContent = FileReader.readTextFile(textFilePath);
             secondaryController.setDeployLabel(fileContent);
-            secondaryController.loadMedia(mediaPath);
+            secondaryController.loadMedia(mediaPath, deployNumber); // Pasar el número de pregunta
             secondaryController.setAnswerLabel(" ");
         });
     } 
-    
-
     @FXML
     void setFullScreen(ActionEvent event) {
         if (secondaryController != null) {
@@ -321,18 +273,17 @@ public class PrimaryController {
             alert.showAndWait();
         }
     }
-
+    
     public void updateFullScreenButtonText(boolean isFullScreen) {
         btnFullScreen.setText(isFullScreen ? "Salir d FullScreen" : "Pantalla Completa");
     }
-
+    
     @FXML
     void pauseVideo(ActionEvent event) {
         if (secondaryController != null) {
             secondaryController.togglePlayPause();
         }
     }
-
     // Otros métodos
     @FXML
     void changeWallpaper(ActionEvent event) {
@@ -348,7 +299,6 @@ public class PrimaryController {
             }
         }
     }
-
     @FXML
     void resetPoints(ActionEvent event) {
         blueTeam = 0;
@@ -357,13 +307,11 @@ public class PrimaryController {
         yellowTeam = 0;
         updateScores();
     }
-
     private void loadQuestion(String textFilePath, String mediaPath) {
         String fileContent = FileReader.readTextFile(textFilePath);
         testLabel.setText(fileContent);
         MediaLoader.loadMedia(mediaPath, testImageView, testMediaView, testMediaContainer, this::setCurrentMediaPlayer);
     }
-
     private void reloadCurrentQuestion() {
         for (Button btn : btnQuestions) {
             if (btn != null && btn.isPressed()) {
@@ -372,27 +320,22 @@ public class PrimaryController {
             }
         }
     }
-    
     public void setStage(Stage stage) {
         this.stage = stage;
         stage.setResizable(true);
-
         // Mover la lógica de binding aquí
         if (bcRanking != null) {
             bcRanking.prefWidthProperty().bind(anchorPane.widthProperty());
             bcRanking.prefHeightProperty().bind(anchorPane.heightProperty().multiply(0.4));
         }
-
         if (testMediaContainer != null) {
             testMediaContainer.prefWidthProperty().bind(anchorPane.widthProperty().multiply(0.8));
             testMediaContainer.prefHeightProperty().bind(anchorPane.heightProperty().multiply(0.4));
         }
-
         List<Button> allButtons = Arrays.asList(btnChangeWallpaper, btnDeploySecondaryWindow, btnFullScreen, 
                                                 btnLessBlue, btnMoreBlue, btnLessRed, btnMoreRed, 
                                                 btnLessOrange, btnMoreOrange, btnLessYellow, btnMoreYellow, 
                                                 btnPauseVideo, btnResetPoints);
-
         for (Button btn : allButtons) {
             if (btn != null) {
                 btn.prefWidthProperty().bind(anchorPane.widthProperty().multiply(0.1));
@@ -400,7 +343,6 @@ public class PrimaryController {
             }
         }
     }
-    
     public boolean isPrimaryStageActive() {
         if (stage != null) {
             return stage.isFocused() || stage.getScene().getRoot().isFocused();

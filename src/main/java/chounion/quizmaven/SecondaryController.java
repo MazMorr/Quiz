@@ -29,6 +29,12 @@ import javafx.stage.Screen;
 import javafx.stage.Window;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * The SecondaryController class handles the secondary screen of the quiz application.
+ * It manages the media display, team scores, and the layout of the user interface components.
+ * This class is responsible for initializing the UI elements, loading media, 
+ * and responding to user interactions.
+ */
 public class SecondaryController {
 
     @FXML private ResourceBundle resources;
@@ -48,28 +54,14 @@ public class SecondaryController {
     private PrimaryController primaryController;
     private boolean[] questionSelected = new boolean[30];
     private ChangeListener<Boolean> focusListener;
-
+    
+     /**
+     * Initializes the SecondaryController by setting up the bar chart,
+     * initializing question labels, and configuring the layout.
+     */
     @FXML
     void initialize() {
-        setupBarChart();        
-        // Cargar imagen relativa al JAR
-        try {
-            String jarPath = getClass().getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
-            String wallpaperDirectory = new File(jarPath).getParent() + File.separator + "chounion" + File.separator + "quizmaven" + File.separator + "Wallpaper";
-
-            File wallpaperFolder = new File(wallpaperDirectory);
-            File[] files = wallpaperFolder.listFiles((dir, name) -> name.toLowerCase().startsWith("wallpaper"));
-
-            if (files != null && files.length > 0) {
-                String imagePath = files[0].toURI().toString();
-                Image image = new Image(imagePath);
-                imgWallpaper.setImage(image);
-            } else {
-                System.out.println("No se encontró ninguna imagen con el nombre 'Wallpaper' en el directorio.");
-            }
-        } catch (URISyntaxException e) {
-            System.err.println("Error al obtener la ruta del JAR: " + e.getMessage());
-        }
+        setupBarChart();
         
         Platform.runLater(() -> {
             initializeQuestionLabels();
@@ -79,6 +71,9 @@ public class SecondaryController {
         });
     }
     
+    /**
+     * Initializes the team point labels for the blue, red, orange, and yellow teams.
+     */
     private void initializeTeamPointLabels() {
         blueTeamdeployPoints = (Label) lookup("#blueTeamDeployPoints");
         redTeamDeployPoints = (Label) lookup("#redTeamDeployPoints");
@@ -86,6 +81,9 @@ public class SecondaryController {
         yellowTeamDeployPoints = (Label) lookup("#yellowTeamDeployPoints");
     }
     
+    /**
+     * Initializes the labels for the available questions.
+     */
     public void initializeQuestionLabels() {
         System.out.println("Iniciando labels de preguntas");
         for (int i = 1; i <= 30; i++) {
@@ -102,11 +100,17 @@ public class SecondaryController {
         }
         System.out.println("Finalizada la inicialización de labels de preguntas");
     }
-
+    
+    /**
+     * Sets the reference to the PrimaryController.
+     */
     public void setPrimaryController(PrimaryController primaryController) {
         this.primaryController = primaryController;
     }
 
+    /**
+     * Sets up the bar chart for team rankings.
+     */
     private void setupBarChart() {
         bcRanking.getData().clear();
         bcRanking.setLegendVisible(false);
@@ -121,26 +125,51 @@ public class SecondaryController {
         customizeBarColors();
     }
 
+    /**
+     * Sets the text of the deploy label.
+     * 
+     * @param text The text to be displayed on the deploy label.
+     */
     public void setDeployLabel(String text) {
         this.deployLabel.setText(text);
     }
     
+    /**
+     * Sets the text of the answer label.
+     * 
+     * @param text The text to be displayed on the answer label.
+     */
     public void setAnswerLabel(String text){
         this.answerLabel.setText(text);
     }
 
+    /**
+     * Sets the wallpaper image for the background.
+     * 
+     * @param image The image to be set as the wallpaper.
+     */
     public void setWallpaper(Image image) {
         this.imgWallpaper.setImage(image);
         updateLayout();
     }
 
-    public void loadMedia(String mediaPath) {
+    /**
+     * Loads media (image or video) based on the question number.
+     * 
+     * @param relativePath The relative path to the media file.
+     * @param questionNumber The question number to load media for.
+     */
+    public void loadMedia(String relativePath, int questionNumber) {
         Platform.runLater(() -> {
             closeCurrentMedia();
-            MediaLoader.loadMedia(mediaPath, deployImageView, deployMediaView, mediaContainer, this::setCurrentMediaPlayer);
+            String fullRelativePath = "/chounion/quizmaven/config/Question" + questionNumber + relativePath; // Incluir el número de pregunta
+            MediaLoader.loadMedia(fullRelativePath, deployImageView, deployMediaView, mediaContainer, this::setCurrentMediaPlayer);
         });
     }
     
+    /**
+     * Moves the application window to the secondary screen if available.
+     */
     public void moveToSecondaryScreen() {
         Platform.runLater(() -> {
             Stage stage = (Stage) mediaContainer.getScene().getWindow();
@@ -153,6 +182,11 @@ public class SecondaryController {
         });
     } 
     
+    /**
+     * Sets the current media player instance.
+     * 
+     * @param mediaPlayer The MediaPlayer instance to be set.
+     */
     private void setCurrentMediaPlayer(MediaPlayer mediaPlayer) {
         this.currentMediaPlayer = mediaPlayer;
         if (this.currentMediaPlayer != null) {
@@ -160,10 +194,18 @@ public class SecondaryController {
         }
     }
 
+    /**
+     * Gets the current media player instance.
+     * 
+     * @return The current MediaPlayer instance.
+     */
     public MediaPlayer getCurrentMediaPlayer() {
         return currentMediaPlayer;
     }
 
+    /**
+     * Toggles the playback of the current media between play and pause.
+     */
     public void toggleVideoPlayback() {
         if (currentMediaPlayer != null) {
             if (currentMediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
@@ -174,6 +216,11 @@ public class SecondaryController {
         }
     }
 
+    /**
+     * Toggles the full screen mode of the application window.
+     * 
+     * @return True if the application is now in full screen mode, false otherwise.
+     */
     public boolean toggleFullScreen() {
         Stage stage = (Stage) mediaContainer.getScene().getWindow();
         boolean willBeFullScreen = !stage.isFullScreen();
@@ -209,14 +256,20 @@ public class SecondaryController {
         return willBeFullScreen;
     }
 
-
-
+    /**
+     * Sets up the key handler for the media container.
+     */
     public void setupKeyHandler() {
         if (mediaContainer.getScene() != null) {
             mediaContainer.getScene().setOnKeyPressed(this::handleKeyPress);
         }
     }
 
+    /**
+     * Handles key press events for the application.
+     * 
+     * @param event The key event to handle.
+     */
     private void handleKeyPress(KeyEvent event) {
         if (event.getCode() == KeyCode.ESCAPE) {
             Stage stage = (Stage) mediaContainer.getScene().getWindow();
@@ -230,6 +283,9 @@ public class SecondaryController {
         }
     }
 
+    /**
+     * Toggles play and pause for the current media player.
+     */
     public void togglePlayPause() {
         if (currentMediaPlayer != null) {
             if (currentMediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
@@ -240,6 +296,9 @@ public class SecondaryController {
         }
     }
 
+    /**
+     * Customizes the colors of the bars in the ranking chart.
+     */
     private void customizeBarColors() {
         String[] colors = {"#0000FF", "#FF0000", "#ffaa00", "#FFFF00"};
         int colorIndex = 0;
@@ -257,6 +316,14 @@ public class SecondaryController {
         }
     }
 
+    /**
+     * Updates the bar chart with the scores of the teams.
+     * 
+     * @param blueScore The score of the blue team.
+     * @param redScore The score of the red team.
+     * @param orangeScore The score of the orange team.
+     * @param yellowScore The score of the yellow team.
+     */
     public void updateBarChart(int blueScore, int redScore, int orangeScore, int yellowScore) {
         bcRanking.getData().clear();
         XYChart.Series<String, Number> series = new XYChart.Series<>();
@@ -278,6 +345,9 @@ public class SecondaryController {
         bcRanking.getData().add(series);
     }
 
+    /**
+     * Closes the current media player and clears the media views.
+     */
     public void closeCurrentMedia() {
         if (currentMediaPlayer != null) {
             currentMediaPlayer.stop();
@@ -287,6 +357,9 @@ public class SecondaryController {
         deployImageView.setImage(null);
     }
 
+    /**
+     * Cleans up the media views.
+     */
     private void cleanupMediaViews() {
         if (deployMediaView != null) {
             deployMediaView.setMediaPlayer(null);
@@ -296,9 +369,13 @@ public class SecondaryController {
         }
         System.out.println("Vistas de media limpiadas");
     }
-    
 
-
+    /**
+     * Sets the opacity of the specified question label.
+     * 
+     * @param questionNumber The question number (1-30).
+     * @param opacity The opacity value to set (0.0 to 1.0).
+     */
     public void setQuestionLabelOpacity(int questionNumber, double opacity) {
         
         if (questionNumber > 0 && questionNumber <= disponibleQuestions.length) {
@@ -312,8 +389,12 @@ public class SecondaryController {
         printQuestionStates(); // Imprimir estados después de cambiar la opacidad
     }
 
-
-    
+    /**
+     * Looks up a node by its ID in the media container's scene.
+     * 
+     * @param id The ID of the node to look up.
+     * @return The node with the specified ID, or null if not found.
+     */
     private Node lookup(String id) {
         try {
             if (mediaContainer != null && mediaContainer.getScene() != null) {
@@ -332,6 +413,11 @@ public class SecondaryController {
         return null;
     }
     
+    /**
+     * Resets the specified question label to full opacity and visibility.
+     * 
+     * @param questionNumber The question number (1-30).
+     */
     public void resetQuestionLabel(int questionNumber) {
         if (questionNumber > 0 && questionNumber <= disponibleQuestions.length) {
             Label label = disponibleQuestions[questionNumber - 1];
@@ -346,16 +432,29 @@ public class SecondaryController {
         }
     }
     
+    /**
+     * Checks if the scene is ready for interaction.
+     * 
+     * @return True if the media container and its scene are not null, false otherwise.
+     */
     private boolean isSceneReady() {
         return mediaContainer != null && mediaContainer.getScene() != null;
     }
     
+    /**
+     * Cleans up resources used by the media player.
+     */
     public void cleanup() {
         if (currentMediaPlayer != null) {
             currentMediaPlayer.dispose();
         }
     }
     
+    /**
+     * Adjusts the layout for full screen mode.
+     * 
+     * @param isFullScreen True if the application is in full screen mode, false otherwise.
+     */
     private void adjustLayoutForFullScreen(boolean isFullScreen) {
         if (isFullScreen) {
             double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
@@ -365,6 +464,9 @@ public class SecondaryController {
         }
     }
 
+    /**
+     * Sets up a responsive layout for the UI components.
+     */
     public void setupResponsiveLayout() {
         System.out.println("Configurando layout responsivo");
         if (rootStackPane.getScene() == null) {
@@ -379,6 +481,11 @@ public class SecondaryController {
         }
     }
     
+    /**
+     * Sets up listeners for stage size changes.
+     * 
+     * @param window The window to set up listeners for.
+     */
     private void setupStageListeners(Window window) {
         if (window instanceof Stage) {
             Stage stage = (Stage) window;
@@ -398,7 +505,9 @@ public class SecondaryController {
         }
     }
 
-
+    /**
+     * Updates the layout of UI components based on the current size of the root stack pane.
+     */
     private void updateLayout() {
         double width = rootStackPane.getWidth();
         double height = rootStackPane.getHeight();
@@ -422,8 +531,11 @@ public class SecondaryController {
         }
     }
 
-
-    
+    /**
+     * Resets all question labels except for the specified question number.
+     * 
+     * @param exceptQuestionNumber The question number to exclude from resetting.
+     */
     public void resetAllQuestionLabelsExcept(int exceptQuestionNumber) {
         for (int i = 0; i < disponibleQuestions.length; i++) {
             if (i + 1 != exceptQuestionNumber && !questionSelected[i]) {
@@ -453,6 +565,7 @@ public class SecondaryController {
             }
         }
     }
+    
     public void updateTeamPoints(int bluePoints, int redPoints, int orangePoints, int yellowPoints) {
         Platform.runLater(() -> {
             if (blueTeamdeployPoints != null) blueTeamdeployPoints.setText(String.valueOf(bluePoints));

@@ -5,10 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-/**
- *
- * @author Usuario
- */
 public class FileReader {
         public static String readTextFile(String fileName) {
         StringBuilder contentBuilder = new StringBuilder();
