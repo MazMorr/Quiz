@@ -1,0 +1,26 @@
+
+.btnMenu {
+    -fx-font-size: 35px;
+    -fx-font-weight: 700;
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-pref-width: 300;
+    -fx-pref-height: 50;
+}
+
+.btnMenu:hover {
+    -fx-opacity: 0.7;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10.0, 0.0, 0.0, 0.0);
+}
+
+.title {
+    -fx-font-size: 65px;
+    -fx-font-family: SansSerif;
+}
+
+.pointsLabel {
+    -fx-border-color: #eeeeee;
+}
+.vs{
+    -fx-font-family: MK2;
+}
