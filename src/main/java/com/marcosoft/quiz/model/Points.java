@@ -1,5 +1,6 @@
 package com.marcosoft.quiz.model;
 
+import javafx.scene.input.MouseEvent;
 import org.springframework.stereotype.Component;
 
 import javafx.scene.control.Label;
@@ -23,4 +24,5 @@ public class Points {
         green.setText(String.valueOf(greenTeamPoints));
         purple.setText(String.valueOf(purpleTeamPoints));
     }
+
 }

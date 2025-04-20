@@ -1,26 +1,59 @@
+/* Formato correcto para JavaFX */
+@font-face {
+    font-family: "Helvetica Bold";
+    src: url("fonts/Helvetica-Bold.ttf") format("TrueType");
+}
 
+@font-face {
+    font-family: "Helvetica Light";
+    src: url("fonts/Helvetica-Light.ttf") format("TrueType");
+}
+
+@font-face {
+    font-family: "Helvetica Rounded";
+    src: url("fonts/helvetica-rounded-bold.otf") format("OpenType");
+}
+
+@font-face {
+    font-family: "Mortal Kombat 2";
+    src: url("fonts/mk2.ttf") format("TrueType");
+}
+
+/* Estilos */
 .btnMenu {
-    -fx-font-size: 35px;
-    -fx-font-weight: 700;
+    -fx-font-family: "Helvetica Bold";
     -fx-background-color: transparent;
-    -fx-cursor: hand;
-    -fx-pref-width: 300;
-    -fx-pref-height: 50;
+    -fx-pref-height: 65;
+    -fx-font-size: 35;
+    -fx-cursor:hand;
+}
+.btnMenu:hover{
+    -fx-opacity:0.7;
 }
 
-.btnMenu:hover {
+.points{
+    -fx-font-family: "Mortal Kombat 2";
+    -fx-font-weight: bold;
+}
+.title{
+    -fx-font-family: "Helvetica Rounded";
+}
+.btnQuestion{
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
+    -fx-font-family: "Helvetica Rounded";
+}
+.btnQuestion:hover{
     -fx-opacity: 0.7;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10.0, 0.0, 0.0, 0.0);
+    -fx-font-size: 27;
 }
-
-.title {
-    -fx-font-size: 65px;
-    -fx-font-family: SansSerif;
+.btnChangeSwitch{
+    -fx-opacity: 0;
+    -fx-animated: true;
 }
-
-.pointsLabel {
-    -fx-border-color: #eeeeee;
+.btnChangeSwitch:hover{
+    -fx-opacity:1;
 }
-.vs{
-    -fx-font-family: MK2;
+.btnTransparent{
+    -fx-background-color: transparent;
 }
