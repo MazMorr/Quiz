@@ -40,4 +40,24 @@ public class ClientServiceImpl implements ClientService {
     public boolean existsClientByClientId(int id) {
         return clientRepository.existsById(id);
     }
+
+    @Override
+    public int updateResolucionById(String resolucion, int id) {
+        return clientRepository.updateResolucionById(resolucion, id);
+    }
+
+    @Override
+    public int updateEsNuevoById(boolean esNuevo, int id) {
+        return clientRepository.updateEsNuevoById(esNuevo, id);
+    }
+
+    @Override
+    public int updateRutaCarpetasById(String rutaCarpetas, int id) {
+        return clientRepository.updateRutaCarpetasById(rutaCarpetas, id);
+    }
+
+    @Override
+    public int updateModoPantallaById(int modoPantalla, int id) {
+        return clientRepository.updateModoPantallaById(modoPantalla,id);
+    }
 }

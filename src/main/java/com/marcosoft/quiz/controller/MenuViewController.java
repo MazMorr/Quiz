@@ -46,7 +46,7 @@ public class MenuViewController {
     @FXML
     public void initialize() throws IOException {
         databaseInitializer.init();
-        directoriesCreator.createAllDirectoriesForTheQuiz();
+
 
         txtVersion.setText("Alfa");
         restartPoints();
@@ -55,9 +55,6 @@ public class MenuViewController {
             Client client= new Client(1, "1000x660", 1, true, DirectoriesCreator.getBasePath());
             clientServiceImpl.save(client);
         }
-
-
-
 
         //Set FullScreen by Configuration stored in Database
         if(clientServiceImpl.getClientById(1).getModoPantalla() ==2){
@@ -100,7 +97,7 @@ public class MenuViewController {
             System.err.println("El archivo no existe: " + filePath);
         }
 
-
+        directoriesCreator.createAllDirectoriesForTheQuiz();
     }                    
 
     @FXML
@@ -110,8 +107,8 @@ public class MenuViewController {
     }
 
     @FXML
-    public void switchToRouletteView(ActionEvent actionEvent) throws IOException {
-        sceneSwitcher.setRoot(actionEvent, "/questionView.fxml");
+    public void switchToThematicSelectionView(ActionEvent actionEvent) throws IOException {
+        sceneSwitcher.setRoot(actionEvent, "/thematicSelectionView.fxml");
     }
 
     @FXML

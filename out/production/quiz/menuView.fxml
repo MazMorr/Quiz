@@ -60,11 +60,11 @@
                         </ImageView>
                      </graphic>
                       </Label>
-                      <Button fx:id="btnStart" alignment="BOTTOM_LEFT" graphicTextGap="8.0" mnemonicParsing="false" onAction="#switchToRouletteView" prefWidth="330.0" styleClass="btnMenu" stylesheets="@styles.css" text="Comenzar" textAlignment="CENTER">
+                      <Button fx:id="btnStart" alignment="BOTTOM_LEFT" graphicTextGap="8.0" mnemonicParsing="false" onAction="#switchToThematicSelectionView" prefWidth="330.0" styleClass="btnMenu" stylesheets="@styles.css" text="Comenzar" textAlignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="43.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/check_circle_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+                              <Image url="@../../../../../Resources/Icons/check_circle_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
                            </image>
                            <effect>
                               <InnerShadow choke="1.0" height="255.0" offsetX="10.0" offsetY="10.0" radius="127.0" width="255.0">
@@ -86,7 +86,7 @@
                      <graphic>
                         <ImageView fitHeight="43.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/settings_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+                              <Image url="@../../../../../Resources/Icons/settings_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
                            </image>
                            <effect>
                               <InnerShadow height="255.0" radius="127.0" width="255.0">

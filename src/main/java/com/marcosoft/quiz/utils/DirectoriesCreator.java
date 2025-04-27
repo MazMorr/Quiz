@@ -1,6 +1,9 @@
 package com.marcosoft.quiz.utils;
 
+import com.marcosoft.quiz.services.impl.ClientServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -12,7 +15,7 @@ import java.util.List;
 public class DirectoriesCreator {
 
     // Ruta base relativa al ejecutable
-    private static final String BASE_PATH = getBasePath();
+    private final String BASE_PATH = getBasePath();
 
     public static String getBasePath() {
         try {
@@ -38,7 +41,7 @@ public class DirectoriesCreator {
         try {
             List<String> thematicPaths = List.of("Temática1", "Temática2", "Temática3", "Temática4");
             List<String> subPaths = List.of("ChiviTemática", "ImagenTemática");
-            List<String> questionPaths = List.of("Pregunta1", "Pregunta2", "Pregunta3", "Pregunta4");
+            List<String> questionPaths = List.of("Pregunta1", "Pregunta2", "Pregunta3", "Pregunta4", "Pregunta5", "Pregunta6");
 
             List<File> directories = new ArrayList<>();
             List<File> files = new ArrayList<>();

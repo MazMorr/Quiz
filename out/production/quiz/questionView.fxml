@@ -72,7 +72,7 @@
                   </VBox>
                </children>
             </HBox>
-            <AnchorPane fx:id="questionPane" layoutX="44.0" layoutY="300.0" prefHeight="370.0" prefWidth="370.0" style="-fx-border-color: gray;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="590.0" AnchorPane.topAnchor="250.0" />
+            <AnchorPane fx:id="questionPane" layoutX="44.0" layoutY="300.0" prefHeight="370.0" prefWidth="370.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="590.0" AnchorPane.topAnchor="250.0" />
             <ImageView fx:id="questionImg" fitHeight="370.0" fitWidth="370.0" layoutY="249.0" pickOnBounds="true" AnchorPane.leftAnchor="41.0" AnchorPane.topAnchor="249.0">
                <image>
                   <Image url="@images/ruZLD99nLfsmwuUpq0IfRWCPixr-1.jpg" />
@@ -81,7 +81,7 @@
                   <Rectangle2D />
                </viewport>
                <effect>
-                  <DropShadow height="5.0" radius="2.0" spread="0.3" width="5.0" />
+                  <DropShadow height="10.0" radius="4.5" spread="0.1" width="10.0" />
                </effect>
             </ImageView>
             <Label fx:id="txtTotalQuestion" layoutX="351.0" layoutY="212.0" prefHeight="40.0" prefWidth="60.0" styleClass="points" stylesheets="@styles.css" text="4" textFill="#333333" AnchorPane.rightAnchor="587.0" AnchorPane.topAnchor="210.0">
@@ -105,14 +105,14 @@
             </Label>
             <VBox alignment="CENTER" layoutX="619.0" layoutY="248.0" prefHeight="370.0" prefWidth="492.0" spacing="70.0" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="248.0">
                <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="492.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="492.0" spacing="20.0">
                      <children>
-                        <Label prefHeight="40.0" prefWidth="44.0" text="A:">
+                        <Label prefHeight="64.0" prefWidth="66.0" text="A:">
                            <font>
-                              <Font name="System Bold" size="28.0" />
+                              <Font name="System Bold" size="38.0" />
                            </font>
                         </Label>
-                        <Button alignment="CENTER_LEFT" graphicTextGap="18.0" mnemonicParsing="false" onAction="#upgradeGreenPoints" prefHeight="80.0" prefWidth="459.0" styleClass="btnQuestion" stylesheets="@styles.css" text="Naruto" textFill="#fff9f9" wrapText="true">
+                        <Button alignment="CENTER_LEFT" graphicTextGap="18.0" mnemonicParsing="false" onAction="#upgradeGreenPoints" prefHeight="80.0" prefWidth="459.0" style="-fx-background-color: #333333;" styleClass="btnQuestion" stylesheets="@styles.css" text="Naruto" textFill="#fffdfd" wrapText="true">
                            <font>
                               <Font name="System Bold" size="27.0" />
                            </font>
@@ -123,19 +123,19 @@
                               <Insets bottom="-5.0" left="15.0" right="5.0" top="-5.0" />
                            </padding>
                            <effect>
-                              <DropShadow height="5.0" radius="2.0" spread="0.4" width="5.0" />
+                              <DropShadow height="5.0" radius="2.0" spread="0.5" width="5.0" />
                            </effect>
                         </Button>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="200.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="200.0" spacing="20.0">
                      <children>
-                        <Label text="B:">
+                        <Label prefHeight="63.0" prefWidth="67.0" text="B:">
                            <font>
-                              <Font name="System Bold" size="28.0" />
+                              <Font name="System Bold" size="38.0" />
                            </font>
                         </Label>
-                        <Button alignment="CENTER_LEFT" graphicTextGap="18.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="462.0" styleClass="btnQuestion" stylesheets="@styles.css" text="Uchiha y la Sarada esa (hija de sasuke)" textFill="#fff9f9" wrapText="true">
+                        <Button alignment="CENTER_LEFT" graphicTextGap="18.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="462.0" style="-fx-background-color: #333333;" styleClass="btnQuestion" stylesheets="@styles.css" text="Uchiha y la Sarada esa (hija de sasuke)" textFill="#fff9f9" wrapText="true">
                            <font>
                               <Font name="System Bold" size="27.0" />
                            </font>
@@ -146,19 +146,19 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <effect>
-                              <DropShadow height="5.0" radius="2.0" spread="0.4" width="5.0" />
+                              <DropShadow height="5.0" radius="2.0" spread="0.5" width="5.0" />
                            </effect>
                         </Button>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="200.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="200.0" spacing="20.0">
                      <children>
-                        <Label text="C:">
+                        <Label prefHeight="70.0" prefWidth="62.0" text="C:">
                            <font>
-                              <Font name="System Bold" size="28.0" />
+                              <Font name="System Bold" size="38.0" />
                            </font>
                         </Label>
-                        <Button alignment="CENTER_LEFT" graphicTextGap="18.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="462.0" styleClass="btnQuestion" stylesheets="@styles.css" text="Los 4 Fantásticos" textFill="#fff9f9" wrapText="true">
+                        <Button alignment="CENTER_LEFT" graphicTextGap="18.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="462.0" style="-fx-background-color: #333333;" styleClass="btnQuestion" stylesheets="@styles.css" text="Los 4 Fantásticos" textFill="#fff9f9" wrapText="true">
                            <font>
                               <Font name="System Bold" size="27.0" />
                            </font>
@@ -169,7 +169,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <effect>
-                              <DropShadow height="5.0" radius="2.0" spread="0.4" width="5.0" />
+                              <DropShadow height="5.0" radius="2.0" spread="0.5" width="5.0" />
                            </effect>
                         </Button>
                      </children>
@@ -181,7 +181,7 @@
                   <Font name="System Bold" size="45.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="108.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgChivi" fitHeight="125.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/Darth%20Vader.png" />
                      </image>

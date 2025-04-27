@@ -11,4 +11,8 @@ public interface ClientService {
     void deleteClientById(int id);
     Client save(Client client);
     boolean existsClientByClientId(int id);
+    int updateResolucionById(String resolucion, int id);
+    int updateEsNuevoById(boolean esNuevo, int id);
+    int updateRutaCarpetasById(String rutaCarpetas, int id);
+    int updateModoPantallaById(int modoPantalla, int id);
 }

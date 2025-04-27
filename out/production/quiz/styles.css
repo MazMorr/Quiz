@@ -54,6 +54,8 @@
 .btnChangeSwitch:hover{
     -fx-opacity:1;
 }
-.btnTransparent{
-    -fx-background-color: transparent;
+.btnConfiguration{
+    -fx-background-color: black;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
 }
