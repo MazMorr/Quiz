@@ -112,7 +112,7 @@
                               <Font name="System Bold" size="38.0" />
                            </font>
                         </Label>
-                        <Button alignment="CENTER_LEFT" graphicTextGap="18.0" mnemonicParsing="false" onAction="#upgradeGreenPoints" prefHeight="80.0" prefWidth="459.0" style="-fx-background-color: #333333;" styleClass="btnQuestion" stylesheets="@styles.css" text="Naruto" textFill="#fffdfd" wrapText="true">
+                        <Button fx:id="btnFirstOption" alignment="CENTER_LEFT" graphicTextGap="18.0" mnemonicParsing="false" onAction="#firstOptionSelected" prefHeight="80.0" prefWidth="459.0" style="-fx-background-color: #333333;" styleClass="btnQuestion" stylesheets="@styles.css" text="Naruto" textFill="#fffdfd" wrapText="true">
                            <font>
                               <Font name="System Bold" size="27.0" />
                            </font>
@@ -135,7 +135,7 @@
                               <Font name="System Bold" size="38.0" />
                            </font>
                         </Label>
-                        <Button alignment="CENTER_LEFT" graphicTextGap="18.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="462.0" style="-fx-background-color: #333333;" styleClass="btnQuestion" stylesheets="@styles.css" text="Uchiha y la Sarada esa (hija de sasuke)" textFill="#fff9f9" wrapText="true">
+                        <Button fx:id="btnSecondOption" alignment="CENTER_LEFT" graphicTextGap="18.0" mnemonicParsing="false" onAction="#secondOptionSelected" prefHeight="80.0" prefWidth="462.0" style="-fx-background-color: #333333;" styleClass="btnQuestion" stylesheets="@styles.css" text="Uchiha y la Sarada esa (hija de sasuke)" textFill="#fff9f9" wrapText="true">
                            <font>
                               <Font name="System Bold" size="27.0" />
                            </font>
@@ -158,7 +158,7 @@
                               <Font name="System Bold" size="38.0" />
                            </font>
                         </Label>
-                        <Button alignment="CENTER_LEFT" graphicTextGap="18.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="462.0" style="-fx-background-color: #333333;" styleClass="btnQuestion" stylesheets="@styles.css" text="Los 4 Fantásticos" textFill="#fff9f9" wrapText="true">
+                        <Button fx:id="btnThirdOption" alignment="CENTER_LEFT" graphicTextGap="18.0" mnemonicParsing="false" onAction="#thirdOptionSelected" prefHeight="80.0" prefWidth="462.0" style="-fx-background-color: #333333;" styleClass="btnQuestion" stylesheets="@styles.css" text="Los 4 Fantásticos" textFill="#fff9f9" wrapText="true">
                            <font>
                               <Font name="System Bold" size="27.0" />
                            </font>
