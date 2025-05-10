@@ -1,7 +1,5 @@
 package com.marcosoft.quiz.model;
 
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import org.springframework.stereotype.Component;
 
 import javafx.scene.control.Label;
@@ -9,8 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.awt.event.ActionEvent;
 
 @Component
 @AllArgsConstructor

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
@@ -12,32 +13,35 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="660.0" prefWidth="1000.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.marcosoft.quiz.controller.MenuViewController">
+<StackPane prefHeight="660.0" prefWidth="1000.0" styleClass="background" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.marcosoft.quiz.controller.MenuViewController">
     <children>
-        <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #eeeeee;">
+        <AnchorPane prefHeight="400.0" prefWidth="600.0">
             <children>
                 <ImageView fitHeight="640.0" fitWidth="398.0" layoutX="482.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="15.0">
                     <image>
                         <Image url="@images/Picsart_25-04-13_09-54-52-911.png" />
                     </image>
                <effect>
-                  <DropShadow height="5.0" radius="2.0" spread="0.5" width="5.0" />
+                  <DropShadow height="45.0" radius="22.0" spread="0.2" width="45.0">
+                     <color>
+                        <Color red="1.0" />
+                     </color></DropShadow>
                </effect>
                 </ImageView>
-            <Label contentDisplay="RIGHT" layoutX="929.0" layoutY="629.0" text="Versión:" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="10.0">
+            <Label contentDisplay="RIGHT" layoutX="929.0" layoutY="629.0" text="Versión:" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="10.0">
                <font>
                   <Font size="25.0" />
                </font>
                <graphic>
-                  <Label fx:id="txtVersion" text="Alfa">
+                  <Label fx:id="txtVersion" text="Alfa" textFill="WHITE">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
                </graphic></Label>
-            <VBox layoutX="68.0" layoutY="70.0" prefHeight="513.0" prefWidth="289.0" spacing="45.0" AnchorPane.leftAnchor="68.0" AnchorPane.topAnchor="70.0">
+            <VBox layoutX="68.0" layoutY="70.0" prefHeight="456.0" prefWidth="289.0" spacing="45.0" AnchorPane.leftAnchor="68.0" AnchorPane.topAnchor="70.0">
                <children>
-                      <Label fx:id="title" graphicTextGap="0.0" prefWidth="289.0" styleClass="title" stylesheets="@styles.css" text="Menú" wrapText="true">
+                      <Label fx:id="title" graphicTextGap="0.0" prefWidth="289.0" styleClass="title" stylesheets="@styles.css" text="Menú" textFill="WHITE" wrapText="true">
                           <font>
                               <Font name="SansSerif Regular" size="80.0" />
                           </font>
@@ -47,24 +51,20 @@
                               <Image url="@images/menu.png" />
                            </image>
                            <effect>
-                              <DropShadow height="5.0" radius="2.0" spread="0.7" width="5.0">
-                                 <input>
-                                    <InnerShadow height="255.0" radius="127.0" width="255.0">
-                                       <color>
-                                          <Color red="1.0" />
-                                       </color>
-                                    </InnerShadow>
-                                 </input>
-                              </DropShadow>
+                              <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0">
+                                 <color>
+                                    <Color red="1.0" />
+                                 </color>
+                              </InnerShadow>
                            </effect>
                         </ImageView>
                      </graphic>
                       </Label>
-                      <Button fx:id="btnStart" alignment="BOTTOM_LEFT" graphicTextGap="8.0" mnemonicParsing="false" onAction="#switchToThematicSelectionView" prefWidth="330.0" styleClass="btnMenu" stylesheets="@styles.css" text="Comenzar" textAlignment="CENTER">
+                      <Button fx:id="btnStart" alignment="CENTER_LEFT" graphicTextGap="8.0" mnemonicParsing="false" onAction="#switchToThematicSelectionView" prefWidth="330.0" styleClass="btnMenu" stylesheets="@styles.css" text="Comenzar" textAlignment="CENTER" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="43.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../Resources/Icons/check_circle_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+                              <Image url="@images/quiz-alt.png" />
                            </image>
                            <effect>
                               <InnerShadow choke="1.0" height="255.0" offsetX="10.0" offsetY="10.0" radius="127.0" width="255.0">
@@ -78,15 +78,18 @@
                      <font>
                         <Font size="30.0" />
                      </font>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
                   </Button>
-                      <Button fx:id="btnConfiguration" alignment="BOTTOM_LEFT" graphicTextGap="8.0" mnemonicParsing="false" onAction="#switchToConfiguration" prefWidth="361.0" styleClass="btnMenu" stylesheets="@styles.css" text="Ajustes">
+                      <Button fx:id="btnConfiguration" alignment="CENTER_LEFT" graphicTextGap="8.0" mnemonicParsing="false" onAction="#switchToConfiguration" prefWidth="361.0" styleClass="btnMenu" stylesheets="@styles.css" text="Ajustes" textFill="WHITE">
                      <font>
                         <Font size="30.0" />
                      </font>
                      <graphic>
                         <ImageView fitHeight="43.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../Resources/Icons/settings_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+                              <Image url="@images/admin-alt.png" />
                            </image>
                            <effect>
                               <InnerShadow height="255.0" radius="127.0" width="255.0">
@@ -97,12 +100,15 @@
                            </effect>
                         </ImageView>
                      </graphic>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
                   </Button>
-                  <Button fx:id="btnQuit" alignment="BOTTOM_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#quit" prefWidth="291.0" styleClass="btnMenu" stylesheets="@styles.css" text="Salir">
+                  <Button fx:id="btnQuit" alignment="CENTER_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#quit" prefWidth="291.0" styleClass="btnMenu" stylesheets="@styles.css" text="Salir" textFill="WHITE">
                      <graphic>
-                        <ImageView fitHeight="41.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="44.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+                              <Image url="@images/leave.png" />
                            </image>
                            <effect>
                               <InnerShadow height="255.0" radius="127.0" width="255.0">
@@ -116,6 +122,9 @@
                      <font>
                         <Font size="30.0" />
                      </font>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
                   </Button>
                </children>
             </VBox>

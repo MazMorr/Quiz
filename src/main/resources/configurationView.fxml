@@ -18,15 +18,15 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="660.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.marcosoft.quiz.controller.ConfigurationViewController">
+<StackPane prefHeight="660.0" prefWidth="1000.0" styleClass="background" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.marcosoft.quiz.controller.ConfigurationViewController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Label alignment="CENTER" graphicTextGap="12.0" layoutX="48.0" layoutY="56.0" prefHeight="52.0" prefWidth="990.0" text="Configuración" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0">
+            <Label alignment="CENTER" graphicTextGap="12.0" layoutX="48.0" layoutY="56.0" prefWidth="990.0" text="Configuración" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0">
                <graphic>
                   <ImageView fitHeight="80.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/customization-cogwheel.png" />
+                        <Image url="@images/admin-alt.png" />
                      </image>
                      <effect>
                         <DropShadow height="5.0" radius="2.0" spread="0.1" width="5.0">
@@ -41,8 +41,11 @@
                   </ImageView>
                </graphic>
                <font>
-                  <Font name="System Bold" size="60.0" />
+                  <Font size="80.0" />
                </font>
+               <padding>
+                  <Insets bottom="-10.0" top="-10.0" />
+               </padding>
             </Label>
             <MenuButton layoutX="113.0" layoutY="171.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="243.0" styleClass="btnConfiguration" stylesheets="@styles.css" text="Modo Pantalla" textFill="WHITE">
                <items>
@@ -56,6 +59,13 @@
                <font>
                   <Font size="25.0" />
                </font>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </MenuButton>
             <MenuButton layoutX="114.0" layoutY="265.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="243.0" styleClass="btnConfiguration" stylesheets="@styles.css" text="Resolución" textFill="WHITE">
               <items>
@@ -70,6 +80,13 @@
                <font>
                   <Font size="25.0" />
                </font>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </MenuButton>
             <Accordion layoutX="471.0" layoutY="223.0" />
             <Button layoutX="435.0" layoutY="229.0" mnemonicParsing="false" onAction="#changePath" prefHeight="52.0" prefWidth="267.0" styleClass="btnConfiguration" stylesheets="@styles.css" text="Cambiar Ruta" textFill="WHITE">
@@ -79,13 +96,20 @@
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </Button>
             <TextField fx:id="txtPath" editable="false" layoutX="436.0" layoutY="196.0" prefHeight="35.0" prefWidth="267.0" promptText="Ruta actual de los archivos">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </TextField>
-            <Button layoutX="916.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="63.0" prefWidth="70.0" style="-fx-background-color: transparent;" stylesheets="@styles.css" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="17.0">
+            <Button layoutX="915.0" layoutY="30.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="63.0" prefWidth="70.0" styleClass="btnChangeSwitch" stylesheets="@styles.css" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="30.0">
                <graphic>
                   <ImageView fitHeight="68.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
                      <image>

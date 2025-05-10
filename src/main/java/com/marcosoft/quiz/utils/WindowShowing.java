@@ -73,37 +73,8 @@ public class WindowShowing {
             stage.setScene(scene);
             stage.getIcons().add(new Image("file:resources/images/RTS_logo.png"));
             stage.show();
+            openStages.add(stage);
 
-            // Configura el estado de la ventana según auxView
-            switch (auxView) {
-                case 0:
-                    setSellViewShowing(true);
-                    stage.setTitle("Ventas");
-                    stage.setOnCloseRequest(eh -> setSellViewShowing(false));
-                    break;
-                case 1:
-                    setBuyViewShowing(true);
-                    stage.setTitle("Compras");
-                    stage.setOnCloseRequest(eh -> setBuyViewShowing(false));
-                    break;
-                case 2:
-                    setFilterViewShowing(true);
-                    stage.setTitle("Filtro de Existencias");
-                    stage.setOnCloseRequest(eh -> setFilterViewShowing(false));
-                    break;
-                case 3:
-                    setConfigurationShowing(true);
-                    stage.setTitle("Configuración");
-                    stage.setOnCloseRequest(eh -> setConfigurationShowing(false));
-                    break;
-                case 4:
-                    setRegistryFilterViewShowing(true);
-                    stage.setTitle("Filtro de Registros");
-                    stage.setOnCloseRequest(eh -> setRegistryFilterViewShowing(false));
-                    break;
-                default:
-                    throw new IllegalArgumentException("Valor de auxView no válido: " + auxView);
-            }
         } else {
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Información");

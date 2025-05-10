@@ -1,7 +1,6 @@
 package com.marcosoft.quiz.controller;
 
 import com.marcosoft.quiz.Main;
-import com.marcosoft.quiz.domain.Client;
 import com.marcosoft.quiz.services.impl.ClientServiceImpl;
 import com.marcosoft.quiz.utils.SceneSwitcher;
 import javafx.event.ActionEvent;
@@ -72,7 +71,7 @@ public class ConfigurationViewController {
 
     @FXML
     private void switchToMenu(ActionEvent actionEvent) throws IOException {
-        sceneSwitcher.setRoot(actionEvent, "/menuView.fxml");
+        sceneSwitcher.setRootWithEvent(actionEvent, "/menuView.fxml");
     }
 
     @FXML

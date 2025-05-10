@@ -1,4 +1,6 @@
-/* Formato correcto para JavaFX */
+/* ==========================
+   Fuentes personalizadas
+   ========================== */
 @font-face {
     font-family: "Helvetica Bold";
     src: url("fonts/Helvetica-Bold.ttf") format("TrueType");
@@ -19,43 +21,99 @@
     src: url("fonts/mk2.ttf") format("TrueType");
 }
 
-/* Estilos */
+/* ==========================
+   Botones del menú principal
+   ========================== */
 .btnMenu {
-    -fx-font-family: "Helvetica Bold";
-    -fx-background-color: transparent;
-    -fx-pref-height: 65;
-    -fx-font-size: 35;
-    -fx-cursor:hand;
-}
-.btnMenu:hover{
-    -fx-opacity:0.7;
+    -fx-font-family: "Helvetica Bold"; /* Fuente personalizada */
+    -fx-background-color: transparent; /* Fondo transparente */
+    -fx-pref-height: 65; /* Altura preferida */
+    -fx-font-size: 35; /* Tamaño de fuente */
+    -fx-cursor: hand; /* Cambiar cursor al pasar por encima */
 }
 
-.points{
-    -fx-font-family: "Mortal Kombat 2";
-    -fx-font-weight: bold;
+.btnMenu:hover {
+    -fx-opacity: 0.7; /* Reducir opacidad al pasar el cursor */
 }
-.title{
-    -fx-font-family: "Helvetica Rounded";
+
+/* ==========================
+   Estilos para los puntos
+   ========================== */
+.points {
+    -fx-font-family: "Mortal Kombat 2"; /* Fuente personalizada */
+    -fx-font-weight: bold; /* Texto en negrita */
+    -fx-background-radius: 10; /* Bordes redondeados */
 }
-.btnQuestion{
-    -fx-background-color: transparent;
-    -fx-background-radius: 10;
-    -fx-font-family: "Helvetica Rounded";
+
+/* ==========================
+   Títulos
+   ========================== */
+.title {
+    -fx-font-family: "Helvetica Rounded"; /* Fuente personalizada */
 }
-.btnQuestion:hover{
-    -fx-opacity: 0.7;
+
+/* ==========================
+   Preguntas
+   ========================== */
+.question {
+    -fx-background-color: #333; /* Fondo gris oscuro */
+    -fx-background-radius: 10; /* Bordes redondeados */
+}
+
+/* ==========================
+   Botones de preguntas
+   ========================== */
+.btnQuestion {
+    -fx-background-color: #333; /* Fondo gris oscuro */
+    -fx-background-radius: 10; /* Bordes redondeados */
     -fx-font-size: 27;
+    -fx-font-family: "Helvetica Rounded"; /* Fuente personalizada */
 }
-.btnChangeSwitch{
-    -fx-opacity: 0;
-    -fx-animated: true;
+
+.btnQuestion:hover {
+    -fx-opacity: 0.7; /* Reducir opacidad al pasar el cursor */
+    -fx-font-size: 27;
+    -fx-font-family: "Helvetica Rounded";
+    -fx-font-weight: bold; /* Texto en negrita */
 }
-.btnChangeSwitch:hover{
-    -fx-opacity:1;
+
+/* ==========================
+   Botones de cambio de vista
+   ========================== */
+.btnChangeSwitch {
+    -fx-opacity: 0; /* Botón inicialmente invisible */
+    -fx-animated: true; /* Animación habilitada */
+    -fx-background-color: transparent; /* Fondo transparente */
 }
-.btnConfiguration{
-    -fx-background-color: black;
-    -fx-background-radius: 10;
-    -fx-cursor: hand;
+
+.btnChangeSwitch:hover {
+    -fx-opacity: 1; /* Hacer visible al pasar el cursor */
+    -fx-cursor: hand; /* Cambiar cursor al pasar por encima */
+}
+
+/* ==========================
+   Botones de configuración
+   ========================== */
+.btnConfiguration {
+    -fx-background-color: #333; /* Fondo gris oscuro */
+    -fx-background-radius: 10; /* Bordes redondeados */
+    -fx-cursor: hand; /* Cambiar cursor al pasar por encima */
+}
+
+.btnConfiguration:hover {
+    -fx-opacity: 0.7; /* Reducir opacidad al pasar el cursor */
+}
+
+/* ==========================
+   Fondo de la aplicación
+   ========================== */
+.background {
+    -fx-background-color: rgb(20, 0, 1); /* Fondo oscuro con un tono rojizo */
+}
+
+/* ==========================
+   Botones transparentes
+   ========================== */
+.btnTransparent {
+    -fx-background-color: transparent; /* Fondo completamente transparente */
 }

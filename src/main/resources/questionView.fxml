@@ -16,64 +16,64 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="660.0" prefWidth="1000.0" style="-fx-background-color: #eee;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.marcosoft.quiz.controller.QuestionViewController">
+<StackPane prefHeight="660.0" prefWidth="1000.0" styleClass="background" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.marcosoft.quiz.controller.QuestionViewController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <HBox alignment="CENTER" layoutY="32.0" prefHeight="63.0" prefWidth="1000.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+            <HBox alignment="CENTER" layoutY="32.0" prefHeight="63.0" prefWidth="1000.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                <children>
-                  <VBox prefHeight="63.0" prefWidth="73.0" style="-fx-background-color: red;" styleClass="pointsLabel" stylesheets="@styles.css">
-                     <children>
-                        <Label fx:id="txtRedTeam" alignment="CENTER" onMouseClicked="#upgradeRedPoints" prefHeight="60.0" prefWidth="70.0" style="-fx-background-color: #eeeeee;" styleClass="points" stylesheets="@styles.css" text="0" textFill="RED">
-                           <font>
-                              <Font size="40.0" />
-                           </font>
-                        </Label>
-                     </children>
+                  <Label fx:id="txtRedTeam" alignment="CENTER" onMouseClicked="#upgradeRedPoints" prefHeight="60.0" prefWidth="70.0" style="-fx-background-color: #eeeeee;" styleClass="points" stylesheets="@styles.css" text="0" textFill="RED">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
                      <effect>
-                        <DropShadow height="5.0" radius="2.0" spread="0.5" width="5.0" />
+                        <DropShadow height="60.0" radius="29.5" spread="0.4" width="60.0">
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </DropShadow>
                      </effect>
-                  </VBox>
-                  <VBox prefHeight="63.0" prefWidth="73.0" style="-fx-background-color: blue;" styleClass="pointsLabel" stylesheets="@styles.css">
-                     <children>
-                        <Label fx:id="txtBlueTeam" alignment="CENTER" onMouseClicked="#upgradeBluePoints" prefHeight="60.0" prefWidth="70.0" style="-fx-background-color: #eeeeee;" styleClass="points" stylesheets="@styles.css" text="0" textFill="#2200ff">
-                           <font>
-                              <Font name="System Bold" size="40.0" />
-                           </font>
-                        </Label>
-                     </children>
+                  </Label>
+                  <Label fx:id="txtBlueTeam" alignment="CENTER" onMouseClicked="#upgradeBluePoints" prefHeight="60.0" prefWidth="70.0" style="-fx-background-color: #eeeeee;" styleClass="points" stylesheets="@styles.css" text="0" textFill="#000fff">
+                     <font>
+                        <Font name="System Bold" size="40.0" />
+                     </font>
                      <effect>
-                        <DropShadow height="5.0" radius="2.0" spread="0.5" width="5.0" />
+                        <DropShadow height="60.0" radius="29.5" spread="0.4" width="60.0">
+                           <color>
+                              <Color green="0.05882352963089943" blue="1.0" />
+                           </color>
+                        </DropShadow>
                      </effect>
-                  </VBox>
-                  <VBox prefHeight="63.0" prefWidth="73.0" style="-fx-background-color: #bb0ada;" styleClass="pointsLabel" stylesheets="@styles.css">
-                     <children>
-                        <Label fx:id="txtPurpleTeam" alignment="CENTER" onMouseClicked="#upgradePurplePoints" prefHeight="60.0" prefWidth="70.0" style="-fx-background-color: #eeeeee;" styleClass="points" stylesheets="@styles.css" text="0" textFill="#bb0ada">
-                           <font>
-                              <Font name="System Bold" size="40.0" />
-                           </font>
-                        </Label>
-                     </children>
+                  </Label>
+                  <Label fx:id="txtPurpleTeam" alignment="CENTER" onMouseClicked="#upgradePurplePoints" prefHeight="60.0" prefWidth="70.0" style="-fx-background-color: #eeeeee;" styleClass="points" stylesheets="@styles.css" text="0" textFill="#bb0ada">
+                     <font>
+                        <Font name="System Bold" size="40.0" />
+                     </font>
                      <effect>
-                        <DropShadow height="5.0" radius="2.0" spread="0.5" width="5.0" />
+                        <DropShadow height="60.0" radius="29.5" spread="0.4" width="60.0">
+                           <color>
+                              <Color red="0.7333333492279053" green="0.03921568766236305" blue="0.8549019694328308" />
+                           </color>
+                        </DropShadow>
                      </effect>
-                  </VBox>
-                  <VBox prefHeight="63.0" prefWidth="73.0" style="-fx-background-color: #14b905;" styleClass="pointsLabel" stylesheets="@styles.css">
-                     <children>
-                        <Label fx:id="txtGreenTeam" alignment="CENTER" onMouseClicked="#upgradeGreenPoints" prefHeight="60.0" prefWidth="70.0" style="-fx-background-color: #eeeeee;" styleClass="points" stylesheets="@styles.css" text="0" textFill="#14b905">
-                           <font>
-                              <Font size="40.0" />
-                           </font>
-                        </Label>
-                     </children>
+                  </Label>
+                  <Label fx:id="txtGreenTeam" alignment="CENTER" onMouseClicked="#upgradeGreenPoints" prefHeight="60.0" prefWidth="70.0" style="-fx-background-color: #eeeeee;" styleClass="points" stylesheets="@styles.css" text="0" textFill="#14b905">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
                      <effect>
-                        <DropShadow height="5.0" radius="2.0" spread="0.5" width="5.0" />
+                        <DropShadow height="60.0" radius="29.5" spread="0.4" width="60.0">
+                           <color>
+                              <Color red="0.0784313753247261" green="0.7254902124404907" blue="0.019607843831181526" />
+                           </color>
+                        </DropShadow>
                      </effect>
-                  </VBox>
+                  </Label>
                </children>
             </HBox>
-            <AnchorPane fx:id="questionPane" layoutX="44.0" layoutY="300.0" prefHeight="370.0" prefWidth="370.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="590.0" AnchorPane.topAnchor="250.0" />
-            <ImageView fx:id="questionImg" fitHeight="370.0" fitWidth="370.0" layoutY="249.0" pickOnBounds="true" AnchorPane.leftAnchor="41.0" AnchorPane.topAnchor="249.0">
+            <AnchorPane fx:id="questionPane" layoutX="44.0" layoutY="300.0" prefHeight="370.0" prefWidth="370.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="600.0" AnchorPane.topAnchor="260.0" />
+            <ImageView fx:id="questionImg" fitHeight="370.0" fitWidth="370.0" layoutY="249.0" pickOnBounds="true" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="259.0">
                <image>
                   <Image url="@images/ruZLD99nLfsmwuUpq0IfRWCPixr-1.jpg" />
                </image>
@@ -81,38 +81,52 @@
                   <Rectangle2D />
                </viewport>
                <effect>
-                  <DropShadow height="10.0" radius="4.5" spread="0.1" width="10.0" />
+                  <DropShadow>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </DropShadow>
                </effect>
             </ImageView>
-            <Label fx:id="txtTotalQuestion" layoutX="351.0" layoutY="212.0" prefHeight="40.0" prefWidth="60.0" styleClass="points" stylesheets="@styles.css" text="4" textFill="#333333" AnchorPane.rightAnchor="587.0" AnchorPane.topAnchor="210.0">
-               <font>
-                  <Font size="28.0" />
-               </font>
-               <graphic>
-                  <Label styleClass="points" stylesheets="@styles.css" text="/" textFill="#333333">
-                     <font>
-                        <Font size="28.0" />
-                     </font>
-                     <graphic>
-                        <Label fx:id="txtActualQuestion" alignment="CENTER" prefHeight="40.0" prefWidth="21.0" styleClass="points" stylesheets="@styles.css" text="1" textFill="#333333">
+            <VBox alignment="TOP_CENTER" layoutX="619.0" layoutY="260.0" prefHeight="370.0" prefWidth="535.0" spacing="40.0" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="260.0">
+               <children>
+                  <HBox alignment="TOP_RIGHT" prefWidth="492.0">
+                     <children>
+                        <Label fx:id="txtTotalQuestion" styleClass="points" stylesheets="@styles.css" text="6" textFill="WHITE">
                            <font>
                               <Font size="28.0" />
                            </font>
+                           <graphic>
+                              <Label styleClass="points" stylesheets="@styles.css" text="/" textFill="WHITE">
+                                 <font>
+                                    <Font size="28.0" />
+                                 </font>
+                                 <graphic>
+                                    <Label fx:id="txtActualQuestion" alignment="CENTER" prefHeight="40.0" prefWidth="21.0" styleClass="points" stylesheets="@styles.css" text="1" textFill="WHITE">
+                                       <font>
+                                          <Font size="28.0" />
+                                       </font>
+                                    </Label>
+                                 </graphic>
+                              </Label>
+                           </graphic>
+                           <padding>
+                              <Insets top="-5.0" />
+                           </padding>
                         </Label>
-                     </graphic>
-                  </Label>
-               </graphic>
-            </Label>
-            <VBox alignment="CENTER" layoutX="619.0" layoutY="248.0" prefHeight="370.0" prefWidth="492.0" spacing="70.0" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="248.0">
-               <children>
+                     </children>
+                     <padding>
+                        <Insets top="-5.0" />
+                     </padding>
+                  </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="492.0" spacing="20.0">
                      <children>
-                        <Label prefHeight="64.0" prefWidth="66.0" text="A:">
+                        <Label prefHeight="64.0" prefWidth="73.0" text="A:" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="38.0" />
                            </font>
                         </Label>
-                        <Button fx:id="btnFirstOption" alignment="CENTER_LEFT" graphicTextGap="18.0" mnemonicParsing="false" onAction="#firstOptionSelected" prefHeight="80.0" prefWidth="459.0" style="-fx-background-color: #333333;" styleClass="btnQuestion" stylesheets="@styles.css" text="Naruto" textFill="#fffdfd" wrapText="true">
+                        <Button fx:id="btnFirstOption" alignment="CENTER_LEFT" graphicTextGap="18.0" mnemonicParsing="false" onAction="#firstOptionSelected" prefHeight="80.0" prefWidth="510.0" styleClass="btnQuestion" stylesheets="@styles.css" text="Naruto" textFill="#fffdfd" wrapText="true">
                            <font>
                               <Font name="System Bold" size="27.0" />
                            </font>
@@ -123,19 +137,53 @@
                               <Insets bottom="-5.0" left="15.0" right="5.0" top="-5.0" />
                            </padding>
                            <effect>
-                              <DropShadow height="5.0" radius="2.0" spread="0.5" width="5.0" />
+                              <DropShadow>
+                                 <color>
+                                    <Color red="1.0" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="-35.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Label prefHeight="63.0" prefWidth="67.0" text="B:" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="38.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnSecondOption" alignment="CENTER_LEFT" graphicTextGap="18.0" mnemonicParsing="false" onAction="#secondOptionSelected" prefHeight="80.0" prefWidth="510.0" styleClass="btnQuestion" stylesheets="@styles.css" text="Uchiha y la Sarada esa (hija de sasuke)" textFill="#fff9f9" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="27.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="-5.0" left="15.0" right="5.0" top="-5.0" />
+                           </padding>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color red="1.0" />
+                                 </color>
+                              </DropShadow>
                            </effect>
                         </Button>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="200.0" spacing="20.0">
                      <children>
-                        <Label prefHeight="63.0" prefWidth="67.0" text="B:">
+                        <Label prefHeight="70.0" prefWidth="68.0" text="C:" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="38.0" />
                            </font>
                         </Label>
-                        <Button fx:id="btnSecondOption" alignment="CENTER_LEFT" graphicTextGap="18.0" mnemonicParsing="false" onAction="#secondOptionSelected" prefHeight="80.0" prefWidth="462.0" style="-fx-background-color: #333333;" styleClass="btnQuestion" stylesheets="@styles.css" text="Uchiha y la Sarada esa (hija de sasuke)" textFill="#fff9f9" wrapText="true">
+                        <Button fx:id="btnThirdOption" alignment="CENTER_LEFT" graphicTextGap="18.0" mnemonicParsing="false" onAction="#thirdOptionSelected" prefHeight="80.0" prefWidth="510.0" styleClass="btnQuestion" stylesheets="@styles.css" text="Los 4 Fantásticos" textFill="#fff9f9" wrapText="true">
                            <font>
                               <Font name="System Bold" size="27.0" />
                            </font>
@@ -146,50 +194,38 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <effect>
-                              <DropShadow height="5.0" radius="2.0" spread="0.5" width="5.0" />
-                           </effect>
-                        </Button>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="200.0" spacing="20.0">
-                     <children>
-                        <Label prefHeight="70.0" prefWidth="62.0" text="C:">
-                           <font>
-                              <Font name="System Bold" size="38.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="btnThirdOption" alignment="CENTER_LEFT" graphicTextGap="18.0" mnemonicParsing="false" onAction="#thirdOptionSelected" prefHeight="80.0" prefWidth="462.0" style="-fx-background-color: #333333;" styleClass="btnQuestion" stylesheets="@styles.css" text="Los 4 Fantásticos" textFill="#fff9f9" wrapText="true">
-                           <font>
-                              <Font name="System Bold" size="27.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="-5.0" left="15.0" right="5.0" top="-5.0" />
-                           </padding>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <effect>
-                              <DropShadow height="5.0" radius="2.0" spread="0.5" width="5.0" />
+                              <DropShadow>
+                                 <color>
+                                    <Color red="1.0" />
+                                 </color>
+                              </DropShadow>
                            </effect>
                         </Button>
                      </children>
                   </HBox>
                </children>
             </VBox>
-            <Label fx:id="lblSecondPart" alignment="CENTER" graphicTextGap="8.0" layoutY="80.0" prefHeight="132.0" prefWidth="1002.0" styleClass="title" stylesheets="@styles.css" text="¿De que color era el caballo blanco de Maceo ?" textFill="#333333" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Label fx:id="lblSecondPart" alignment="CENTER" graphicTextGap="8.0" layoutX="20.0" layoutY="95.0" prefHeight="132.0" prefWidth="1002.0" styleClass="question" stylesheets="@styles.css" text="¿De que color era el caballo blanco de Maceo ?" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
                <font>
                   <Font name="System Bold" size="45.0" />
                </font>
                <graphic>
-                  <ImageView fx:id="imgChivi" fitHeight="125.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgChivi" fitHeight="117.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/Darth%20Vader.png" />
                      </image>
                      <effect>
-                        <DropShadow height="5.0" radius="2.0" spread="0.3" width="5.0" />
+                        <DropShadow />
                      </effect>
                   </ImageView>
                </graphic>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </Label>
             <Button layoutX="6.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToMenu" opacity="0.0" prefHeight="63.0" prefWidth="70.0" style="-fx-background-color: transparent;" styleClass="btnChangeSwitch" stylesheets="@styles.css" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
                <graphic>
