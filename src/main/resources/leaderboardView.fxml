@@ -17,7 +17,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="660.0" prefWidth="1000.0" styleClass="background" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.marcosoft.quiz.controller.LeaderboardViewController">
+<StackPane prefHeight="700.0" prefWidth="1280.0" styleClass="background" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.marcosoft.quiz.controller.LeaderboardViewController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -32,7 +32,7 @@
                      </color></DropShadow>
                </effect>
             </ImageView>
-            <BarChart fx:id="leaderboard" alternativeRowFillVisible="false" barGap="3.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="245.0" layoutY="154.0" legendVisible="false" prefHeight="487.0" prefWidth="525.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="230.0">
+            <BarChart fx:id="leaderboard" alternativeRowFillVisible="false" barGap="3.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="245.0" layoutY="154.0" legendVisible="false" prefHeight="544.0" prefWidth="810.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="230.0">
               <xAxis>
                 <CategoryAxis opacity="0.0" prefWidth="451.0" side="BOTTOM">
                      <categories>

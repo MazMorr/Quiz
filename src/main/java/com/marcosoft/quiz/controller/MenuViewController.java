@@ -5,14 +5,10 @@ import com.marcosoft.quiz.domain.Client;
 import com.marcosoft.quiz.model.Points;
 import com.marcosoft.quiz.model.ThematicState;
 import com.marcosoft.quiz.services.impl.ClientServiceImpl;
-import com.marcosoft.quiz.utils.DatabaseInitializer;
-import com.marcosoft.quiz.utils.DirectoriesCreator;
-import com.marcosoft.quiz.utils.SceneSwitcher;
-import com.marcosoft.quiz.utils.SoundPlayer;
+import com.marcosoft.quiz.utils.*;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
@@ -42,25 +38,36 @@ public class MenuViewController {
     private SoundPlayer soundPlayer;
     @Autowired
     private ThematicState thematicState;
+    @Autowired
+    private PersonalizedAlerts personalizedAlerts;
 
     @FXML
     private Button btnQuit, btnStart, btnConfiguration;
     @FXML
-    private Label title, txtVersion;
+    private Label  txtVersion;
 
     @FXML
-    public void initialize() throws IOException {
+    public void initialize() {
+        txtVersion.setText("0.9.9b");
+
         databaseInitializer.init();
+        restartPointsAndThematics();
+        createClientIfDoesNotExists();
 
-        txtVersion.setText("0.9.8b");
-        restartPoints();
-        restartThematics();
+        initKeyboardEvents();
 
+        directoriesCreator.createAllDirectoriesForTheQuiz();
+        // soundPlayer.playMusic(clientServiceImpl.getClientById(1).getRutaCarpetas()+"/musica.mp3");
+    }
+    // initConfigurations();
+    private void createClientIfDoesNotExists() {
         if (!clientServiceImpl.existsClientByClientId(1)) {
-            Client client = new Client(1, "1000x660", 1, true, DirectoriesCreator.getBasePath());
+            Client client = new Client(1, "1280x700", 1, true, DirectoriesCreator.getBasePath());
             clientServiceImpl.save(client);
         }
+    }
 
+    private void initConfigurations() {
         //Set FullScreen by Configuration stored in Database
         if (clientServiceImpl.getClientById(1).getModoPantalla() == 2) {
             Main.getPrimaryStage().setFullScreen(true);
@@ -68,11 +75,13 @@ public class MenuViewController {
             Main.getPrimaryStage().setFullScreen(false);
         }
         //Set Resolution by configuration stored in database
-        if (clientServiceImpl.getClientById(1).getResolucion().equals("1000x660")) {
-            Main.getPrimaryStage().setWidth(1100);
+        if (clientServiceImpl.getClientById(1).getResolucion().equals("1280x700")) {
+            Main.getPrimaryStage().setWidth(1280);
             Main.getPrimaryStage().setHeight(700);
         }
+    }
 
+    private void initKeyboardEvents() {
         // Configurar eventos de teclado después de que la escena esté lista
         Platform.runLater(() -> {
             if (btnQuit.getScene() != null) {
@@ -83,9 +92,6 @@ public class MenuViewController {
                 });
             }
         });
-
-        directoriesCreator.createAllDirectoriesForTheQuiz();
-        //soundPlayer.playMusic(clientServiceImpl.getClientById(1).getRutaCarpetas()+"/musica.mp3");
     }
 
     @FXML
@@ -99,15 +105,14 @@ public class MenuViewController {
         try {
             // Validar configuración de preguntas, respuestas, nombres de temáticas e imágenes
             if (validateConfiguration()) {
-            // Cambiar a la vista de selección de temáticas si todo está correcto
-            sceneSwitcher.setRootWithEvent(actionEvent, "/thematicSelectionView.fxml");
+                // Cambiar a la vista de selección de temáticas si todo está correcto
+                sceneSwitcher.setRootWithEvent(actionEvent, "/thematicSelectionView.fxml");
             } else {
-            // Mostrar un mensaje de error si hay problemas en la configuración
-                showError("Hay problemas en la configuración. Por favor, revisa los detalles y corrige los errores.");
+                // Mostrar un mensaje de error si hay problemas en la configuración
+                personalizedAlerts.showError("Hay problemas en la configuración. Por favor, revisa los detalles y corrige los errores.");
             }
         } catch (IOException e) {
-            showError("Error al cambiar a la vista de selección de temáticas: " + e.getMessage());
-            e.printStackTrace();
+            personalizedAlerts.showError("Error al cambiar a la vista de selección de temáticas: " + e.getMessage());
         }
     }
 
@@ -116,19 +121,20 @@ public class MenuViewController {
         sceneSwitcher.setRootWithEvent(actionEvent, "/configurationView.fxml");
     }
 
-    public void restartPoints() {
+    public void restartPointsAndThematics() {
         points.setGreenTeamPoints(0);
         points.setBlueTeamPoints(0);
         points.setRedTeamPoints(0);
         points.setPurpleTeamPoints(0);
-    }
-
-    public void restartThematics() {
         thematicState.setThematic1selected(false);
         thematicState.setThematic2selected(false);
         thematicState.setThematic3selected(false);
         thematicState.setThematic4selected(false);
-        thematicState.setX(0);
+        thematicState.setThematicsSelectedCounter(0);
+    }
+
+    public void restartThematics() {
+
     }
 
     /**
@@ -193,26 +199,12 @@ public class MenuViewController {
 
         // Mostrar el mensaje de error si hay problemas
         if (!allValid) {
-            showError(errorMessage.toString());
+            personalizedAlerts.showError(errorMessage.toString());
         }
 
         return allValid;
     }
 
-    /**
-     * Muestra un mensaje de error al usuario.
-     *
-     * @param message Mensaje de error a mostrar.
-     */
-    private void showError(String message) {
-        Platform.runLater(() -> {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error de configuración");
-            alert.setHeaderText("Configuración inválida");
-            alert.setContentText(message);
-            alert.getDialogPane().setPrefWidth(600); // Ajustar el ancho del cuadro de diálogo si el mensaje es largo
-            alert.showAndWait();
-        });
-    }
+
 
 }

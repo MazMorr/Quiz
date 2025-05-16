@@ -32,33 +32,43 @@ import java.util.List;
 public class QuestionViewController {
 
     // Servicios y utilidades
-    @Autowired private ClientServiceImpl clientService;
-    @Autowired private SceneSwitcher sceneSwitcher;
-    @Autowired private Points points;
-    @Autowired private ThematicState thematicState;
-    @Autowired private SoundPlayer soundPlayer;
+    @Autowired
+    private ClientServiceImpl clientService;
+    @Autowired
+    private SceneSwitcher sceneSwitcher;
+    @Autowired
+    private Points points;
+    @Autowired
+    private ThematicState thematicState;
+    @Autowired
+    private SoundPlayer soundPlayer;
 
     // Componentes de la interfaz
-    @FXML private Label lblSecondPart, txtGreenTeam, txtPurpleTeam, txtRedTeam, txtBlueTeam, txtTotalQuestion, txtActualQuestion;
-    @FXML private ImageView questionImg, imgChivi;
-    @FXML private AnchorPane questionPane;
-    @FXML private Button btnFirstOption, btnSecondOption, btnThirdOption;
+    @FXML
+    private Label lblSecondPart, txtGreenTeam, txtPurpleTeam, txtRedTeam, txtBlueTeam, txtTotalQuestion, txtActualQuestion;
+    @FXML
+    private ImageView questionImg, imgChivi;
+    @FXML
+    private AnchorPane questionPane;
+    @FXML
+    private Button btnFirstOption, btnSecondOption, btnThirdOption;
 
     // Estado de preguntas y respuestas
     private List<String> questions = new ArrayList<>();
     private List<String> answers = new ArrayList<>();
     private int currentQuestionIndex = 0;
 
-    // =======================
-    // Inicialización
-    // =======================
+    // ======================= //
+    // Inicialización          //
+    // ======================= //
 
     @FXML
     private void initialize() {
         loadQuestionsAndAnswersFromThematic();
         initNodes();
         initKeyboardControls();
-        resizeQuestionImage();
+
+
         if (questions != null && !questions.isEmpty()) {
             displayCurrentQuestion();
         } else {
@@ -72,11 +82,6 @@ public class QuestionViewController {
         } else {
             System.err.println("Los nodos @FXML no están inicializados");
         }
-    }
-
-    private void resizeQuestionImage() {
-        questionPane.widthProperty().addListener((observable, oldValue, newValue) -> adjustImage());
-        questionPane.heightProperty().addListener((observable, oldValue, newValue) -> adjustImage());
     }
 
     private void initKeyboardControls() {

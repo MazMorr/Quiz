@@ -13,11 +13,11 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="660.0" prefWidth="1000.0" styleClass="background" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.marcosoft.quiz.controller.MenuViewController">
+<StackPane prefHeight="720.0" prefWidth="1280.0" styleClass="background" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.marcosoft.quiz.controller.MenuViewController">
     <children>
         <AnchorPane prefHeight="400.0" prefWidth="600.0">
             <children>
-                <ImageView fitHeight="640.0" fitWidth="398.0" layoutX="482.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="15.0">
+                <ImageView fitHeight="640.0" fitWidth="398.0" layoutX="482.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="150.0">
                     <image>
                         <Image url="@images/Picsart_25-04-13_09-54-52-911.png" />
                     </image>
@@ -28,7 +28,7 @@
                      </color></DropShadow>
                </effect>
                 </ImageView>
-            <Label contentDisplay="RIGHT" layoutX="929.0" layoutY="629.0" text="Versión:" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="10.0">
+            <Label contentDisplay="RIGHT" layoutX="929.0" layoutY="629.0" text="Versión:" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="10.0">
                <font>
                   <Font size="25.0" />
                </font>
@@ -39,9 +39,9 @@
                      </font>
                   </Label>
                </graphic></Label>
-            <VBox layoutX="68.0" layoutY="70.0" prefHeight="456.0" prefWidth="289.0" spacing="45.0" AnchorPane.leftAnchor="68.0" AnchorPane.topAnchor="70.0">
+            <VBox layoutX="68.0" layoutY="70.0" prefHeight="520.0" prefWidth="295.0" spacing="50.0" AnchorPane.leftAnchor="68.0" AnchorPane.topAnchor="70.0">
                <children>
-                      <Label fx:id="title" graphicTextGap="0.0" prefWidth="289.0" styleClass="title" stylesheets="@styles.css" text="Menú" textFill="WHITE" wrapText="true">
+                      <Label graphicTextGap="0.0" prefWidth="289.0" styleClass="title" stylesheets="@styles.css" text="Menú" textFill="WHITE" wrapText="true">
                           <font>
                               <Font name="SansSerif Regular" size="80.0" />
                           </font>
@@ -76,7 +76,7 @@
                         </ImageView>
                      </graphic>
                      <font>
-                        <Font size="30.0" />
+                        <Font size="4.0" />
                      </font>
                      <padding>
                         <Insets left="5.0" />

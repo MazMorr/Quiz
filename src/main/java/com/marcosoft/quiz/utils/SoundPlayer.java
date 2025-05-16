@@ -60,9 +60,7 @@ public class SoundPlayer {
             mediaPlayerSound = new MediaPlayer(sound);
 
             mediaPlayerSound.play();
-            mediaPlayerSound.setOnEndOfMedia(() -> {
-                mediaPlayerSound.stop();
-            });
+            mediaPlayerSound.setOnEndOfMedia(() -> mediaPlayerSound.stop());
         } catch (Exception e) {
             e.printStackTrace();
         }

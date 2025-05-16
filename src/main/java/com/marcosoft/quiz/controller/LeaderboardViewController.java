@@ -37,7 +37,10 @@ public class LeaderboardViewController {
     @FXML
     private void initialize() {
         setupBarChartWithAnimation();
+        initBarChartWithTransparentBackground();
+    }
 
+    private void initBarChartWithTransparentBackground() {
         // Fondo transparente para el BarChart y el área de trazado
         leaderboard.setStyle("-fx-background-color: transparent;");
 
@@ -48,10 +51,10 @@ public class LeaderboardViewController {
     private void setupBarChartWithAnimation() {
         // Obtener los puntos y nombres de los equipos
         int[] teamPoints = {
-            points.getRedTeamPoints(),
-            points.getBlueTeamPoints(),
-            points.getPurpleTeamPoints(),
-            points.getGreenTeamPoints()
+                points.getRedTeamPoints(),
+                points.getBlueTeamPoints(),
+                points.getPurpleTeamPoints(),
+                points.getGreenTeamPoints()
         };
         String[] teamNames = {"Rojo", "Azul", "Púrpura", "Verde"};
         String[] colors = {"#ff0000", "#2200ff", "#bb0ada", "#14b905"};

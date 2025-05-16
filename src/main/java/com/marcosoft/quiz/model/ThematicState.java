@@ -15,7 +15,7 @@ public class ThematicState {
     private String actualThematic;
     @Setter
     @Getter
-    private int x = 0;
+    private int thematicsSelectedCounter = 0;
     @Getter
     @Setter
     private boolean isThematic1selected = false, isThematic2selected = false, isThematic3selected = false, isThematic4selected = false;

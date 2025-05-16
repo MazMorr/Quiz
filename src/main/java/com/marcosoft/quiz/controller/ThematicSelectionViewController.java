@@ -179,7 +179,7 @@ public class ThematicSelectionViewController {
         }
 
         // Si no queda ninguna temática, saltar directamente al leaderboard
-        if (thematicState.getX() == 4) {
+        if (thematicState.getThematicsSelectedCounter() == 4) {
             try {
                 System.out.println("No quedan temáticas disponibles. Cambiando a la vista del leaderboard...");
                 sceneSwitcher.setRoot(btnFirstOption, "/leaderboardView.fxml");
@@ -203,7 +203,7 @@ public class ThematicSelectionViewController {
                 thematicState.setThematic1selected(true);
             }
             thematicState.actualThematic(remainingThematic);
-            thematicState.setX(thematicState.getX() + 1);
+            thematicState.setThematicsSelectedCounter(thematicState.getThematicsSelectedCounter() + 1);
 
             try {
                 System.out.println("Solo queda una temática disponible: " + remainingThematic);
@@ -225,7 +225,7 @@ public class ThematicSelectionViewController {
                 e.printStackTrace();
             }
         } else if (availableThematics.size() == 2) {
-            thematicState.setX(thematicState.getX() + 1);
+            thematicState.setThematicsSelectedCounter(thematicState.getThematicsSelectedCounter() + 1);
 
             String[] thematics = selectRandomThematics(availableThematics);
             String finalThematic1 = thematics[0];
@@ -246,7 +246,7 @@ public class ThematicSelectionViewController {
 
         } else {
             // Animación para seleccionar temáticas
-            thematicState.setX(thematicState.getX() + 1);
+            thematicState.setThematicsSelectedCounter(thematicState.getThematicsSelectedCounter() + 1);
 
             // Deshabilitar botones antes de la animación
             btnFirstOption.setDisable(true);
@@ -376,7 +376,7 @@ public class ThematicSelectionViewController {
                     "$speak.Speak('" + text.replace("'", "''") + "');\"";
             cortanaVoiceProcess = Runtime.getRuntime().exec(command);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
     }
 
@@ -387,27 +387,4 @@ public class ThematicSelectionViewController {
         }
     }
 
-    @Deprecated
-    public void testSelectThematic(ActionEvent actionEvent) {
-        String selectedThematic = txtFirstOption.getText();
-        String pathToSelectedThematic = thematicDisplayed1;
-        int x = 1;
-        if (thematicDisplayed1.equals("Temática4")) {
-            thematicState.setThematic4selected(true);
-        }
-        if (thematicDisplayed1.equals("Temática3")) {
-            thematicState.setThematic3selected(true);
-        }
-        if (thematicDisplayed1.equals("Temática2")) {
-            thematicState.setThematic2selected(true);
-        }
-        if (thematicDisplayed1.equals("Temática1")) {
-            thematicState.setThematic1selected(true);
-        }
-
-        thematicState.actualThematic(pathToSelectedThematic);
-        System.out.println("Temática seleccionada: " + selectedThematic);
-
-        displayAllTheThematics();
-    }
 }

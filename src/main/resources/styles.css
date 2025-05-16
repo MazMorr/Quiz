@@ -28,7 +28,7 @@
     -fx-font-family: "Helvetica Bold"; /* Fuente personalizada */
     -fx-background-color: transparent; /* Fondo transparente */
     -fx-pref-height: 65; /* Altura preferida */
-    -fx-font-size: 35; /* Tamaño de fuente */
+    -fx-font-size: 40; /* Tamaño de fuente */
     -fx-cursor: hand; /* Cambiar cursor al pasar por encima */
 }
 
