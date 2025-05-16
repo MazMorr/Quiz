@@ -11,7 +11,6 @@ import java.util.Map;
 @Component
 public class ThematicState {
 
-    private final Map<String, Boolean> thematicStatus = new HashMap<>();
     @Getter
     private String actualThematic;
     @Setter

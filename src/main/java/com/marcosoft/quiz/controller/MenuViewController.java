@@ -98,14 +98,13 @@ public class MenuViewController {
     public void switchToThematicSelectionView(ActionEvent actionEvent) {
         try {
             // Validar configuración de preguntas, respuestas, nombres de temáticas e imágenes
-            //if (validateConfiguration()) {
+            if (validateConfiguration()) {
             // Cambiar a la vista de selección de temáticas si todo está correcto
-            soundPlayer.stopMusic();
             sceneSwitcher.setRootWithEvent(actionEvent, "/thematicSelectionView.fxml");
-            //} else {
+            } else {
             // Mostrar un mensaje de error si hay problemas en la configuración
-            //    showError("Hay problemas en la configuración. Por favor, revisa los detalles y corrige los errores.");
-            //}
+                showError("Hay problemas en la configuración. Por favor, revisa los detalles y corrige los errores.");
+            }
         } catch (IOException e) {
             showError("Error al cambiar a la vista de selección de temáticas: " + e.getMessage());
             e.printStackTrace();

@@ -37,6 +37,12 @@ public class LeaderboardViewController {
     @FXML
     private void initialize() {
         setupBarChartWithAnimation();
+
+        // Fondo transparente para el BarChart y el área de trazado
+        leaderboard.setStyle("-fx-background-color: transparent;");
+
+        // Fondo transparente para el área de trazado (plot)
+        leaderboard.lookup(".chart-plot-background").setStyle("-fx-background-color: transparent;");
     }
 
     private void setupBarChartWithAnimation() {
