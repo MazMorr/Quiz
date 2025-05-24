@@ -1,6 +1,7 @@
 package com.marcosoft.quiz.controller;
 
 import com.marcosoft.quiz.model.Points;
+import com.marcosoft.quiz.utils.PersonalizedAlerts;
 import com.marcosoft.quiz.utils.SceneSwitcher;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -27,6 +28,8 @@ public class LeaderboardViewController {
     private Points points;
     @Autowired
     private SceneSwitcher sceneSwitcher;
+    @Autowired
+    private PersonalizedAlerts personalizedAlerts;
     @FXML
     private BarChart<String, Number> leaderboard;
 
@@ -136,7 +139,7 @@ public class LeaderboardViewController {
         try {
             sceneSwitcher.setRootWithEvent(actionEvent, "/menuView.fxml");
         } catch (IOException e) {
-            e.printStackTrace();
+            personalizedAlerts.showError("Error", "Cambio de ventana", "Error al cambiar a la ventana del menú");
         }
     }
 }

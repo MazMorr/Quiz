@@ -18,15 +18,21 @@ public class Client {
     @Id
     private int id;
 
-    @Column(nullable = false)
-    private String resolucion;
+    @Column(nullable = false, name= "resolucion")
+    private String resolution;
+
+    @Column(nullable = false, name= "modo_Pantalla")
+    private int windowMode;
+
+    @Column(nullable = false, name = "es_nuevo")
+    private boolean isNew;
+
+    @Column(nullable = false, name="ruta_archivos")
+    private String folderPath;
 
     @Column(nullable = false)
-    private int modoPantalla;
+    private int questionNumber;
 
     @Column(nullable = false)
-    private boolean esNuevo;
-
-    @Column(nullable = false)
-    private String rutaCarpetas;
+    private int thematicNumber;
 }

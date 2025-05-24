@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -15,10 +16,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="660.0" prefWidth="1000.0" styleClass="background" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.marcosoft.quiz.controller.ConfigurationViewController">
+<StackPane prefHeight="720.0" prefWidth="1280.0" styleClass="background" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.marcosoft.quiz.controller.ConfigurationViewController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -47,68 +49,7 @@
                   <Insets bottom="-10.0" top="-10.0" />
                </padding>
             </Label>
-            <MenuButton layoutX="113.0" layoutY="171.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="243.0" styleClass="btnConfiguration" stylesheets="@styles.css" text="Modo Pantalla" textFill="WHITE">
-               <items>
-                  <RadioMenuItem fx:id="rmiVentana" mnemonicParsing="false" onMenuValidation="#setWindows" text="Ventana">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="windowMode" />
-                     </toggleGroup>
-                  </RadioMenuItem>
-                  <RadioMenuItem fx:id="rmiFullScreen" mnemonicParsing="false" onMenuValidation="#setFullScreen" text="Pantalla Completa" toggleGroup="$windowMode" />
-               </items>
-               <font>
-                  <Font size="25.0" />
-               </font>
-               <effect>
-                  <DropShadow>
-                     <color>
-                        <Color red="1.0" />
-                     </color>
-                  </DropShadow>
-               </effect>
-            </MenuButton>
-            <MenuButton layoutX="114.0" layoutY="265.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="243.0" styleClass="btnConfiguration" stylesheets="@styles.css" text="Resolución" textFill="WHITE">
-              <items>
-                  <RadioMenuItem fx:id="rmi1000x600" mnemonicParsing="false" onMenuValidation="#set1000x600" text="1000x600">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="resolution" />
-                     </toggleGroup>
-                  </RadioMenuItem>
-                  <RadioMenuItem fx:id="rmi1280x720" mnemonicParsing="false" onMenuValidation="#set1280x720" text="1280x720" toggleGroup="$resolution" />
-                  <RadioMenuItem fx:id="rmi1920x1080" mnemonicParsing="false" onMenuValidation="#set1920x1080" text="1920x1080" toggleGroup="$resolution" />
-              </items>
-               <font>
-                  <Font size="25.0" />
-               </font>
-               <effect>
-                  <DropShadow>
-                     <color>
-                        <Color red="1.0" />
-                     </color>
-                  </DropShadow>
-               </effect>
-            </MenuButton>
             <Accordion layoutX="471.0" layoutY="223.0" />
-            <Button layoutX="435.0" layoutY="229.0" mnemonicParsing="false" onAction="#changePath" prefHeight="52.0" prefWidth="267.0" styleClass="btnConfiguration" stylesheets="@styles.css" text="Cambiar Ruta" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font name="System Bold" size="25.0" />
-               </font>
-               <effect>
-                  <DropShadow>
-                     <color>
-                        <Color red="1.0" />
-                     </color>
-                  </DropShadow>
-               </effect>
-            </Button>
-            <TextField fx:id="txtPath" editable="false" layoutX="436.0" layoutY="196.0" prefHeight="35.0" prefWidth="267.0" promptText="Ruta actual de los archivos">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-            </TextField>
             <Button layoutX="915.0" layoutY="30.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="63.0" prefWidth="70.0" styleClass="btnChangeSwitch" stylesheets="@styles.css" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="30.0">
                <graphic>
                   <ImageView fitHeight="68.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
@@ -135,6 +76,95 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <VBox layoutX="69.0" layoutY="196.0" prefHeight="334.0" prefWidth="440.0" spacing="20.0" AnchorPane.bottomAnchor="190.0" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="190.0">
+               <children>
+                  <MenuButton mnemonicParsing="false" popupSide="RIGHT" prefHeight="55.0" prefWidth="454.0" styleClass="btnConfiguration" stylesheets="@styles.css" text="Modo Pantalla" textFill="WHITE">
+                     <items>
+                        <RadioMenuItem fx:id="rmiWindow" mnemonicParsing="false" onMenuValidation="#setWindows" text="Ventana">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="windowMode" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem fx:id="rmiFullScreen" mnemonicParsing="false" onMenuValidation="#setFullScreen" text="Pantalla Completa" toggleGroup="$windowMode" />
+                     </items>
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </MenuButton>
+                  <MenuButton mnemonicParsing="false" popupSide="RIGHT" prefHeight="55.0" prefWidth="470.0" styleClass="btnConfiguration" stylesheets="@styles.css" text="Resolución" textFill="WHITE">
+                    <items>
+                        <RadioMenuItem fx:id="rmi1000x600" mnemonicParsing="false" onMenuValidation="#set1000x600" text="1000x600">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="resolution" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem fx:id="rmi1280x720" mnemonicParsing="false" onMenuValidation="#set1280x720" text="1280x720" toggleGroup="$resolution" />
+                        <RadioMenuItem fx:id="rmi1920x1080" mnemonicParsing="false" onMenuValidation="#set1920x1080" text="1920x1080" toggleGroup="$resolution" />
+                    </items>
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </MenuButton>
+                  <MenuButton contentDisplay="RIGHT" graphicTextGap="10.0" mnemonicParsing="false" popupSide="RIGHT" prefHeight="55.0" prefWidth="480.0" styleClass="btnConfiguration" stylesheets="@styles.css" text="Cantidad Preguntas:" textFill="WHITE">
+                    <items>
+                      <MenuItem fx:id="miQuestion4" mnemonicParsing="false" onAction="#setQuestion4" text="4" />
+                      <MenuItem fx:id="miQuestion6" mnemonicParsing="false" onAction="#setQuestion6" text="6" />
+                        <MenuItem fx:id="miQuestion8" mnemonicParsing="false" onAction="#setQuestion8" text="8" />
+                        <MenuItem fx:id="miQuestion10" mnemonicParsing="false" onAction="#setQuestion10" text="10" />
+                    </items>
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <graphic>
+                        <Label fx:id="txtQuestionQuantity" graphicTextGap="20.0" text="4" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                  </MenuButton>
+                  <MenuButton contentDisplay="RIGHT" graphicTextGap="10.0" mnemonicParsing="false" popupSide="RIGHT" prefHeight="55.0" prefWidth="492.0" styleClass="btnConfiguration" stylesheets="@styles.css" text="Cantidad Temáticas:" textFill="WHITE">
+                     <items>
+                        <MenuItem fx:id="miThematic4" mnemonicParsing="false" onAction="#setThematic4" text="4" />
+                        <MenuItem fx:id="miThematic6" mnemonicParsing="false" onAction="#setThematic6" text="6" />
+                        <MenuItem fx:id="miThematic8" mnemonicParsing="false" onAction="#setThematic8" text="8" />
+                        <MenuItem fx:id="miThematic10" mnemonicParsing="false" onAction="#setThematic10" text="10" />
+                     </items>
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <graphic>
+                        <Label fx:id="txtThematicQuantity" graphicTextGap="20.0" text="6" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                  </MenuButton>
+               </children>
+            </VBox>
+            <VBox layoutX="727.0" layoutY="216.0" prefHeight="200.0" prefWidth="440.0" spacing="20.0" AnchorPane.bottomAnchor="190.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="190.0">
+               <children>
+                  <Button graphicTextGap="15.0" mnemonicParsing="false" onAction="#changePath" prefHeight="52.0" prefWidth="443.0" styleClass="btnConfiguration" stylesheets="@styles.css" text="Cambiar" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <graphic>
+                        <TextField fx:id="txtPath" prefHeight="50.0" prefWidth="307.0" promptText="Ruta actual de los archivos">
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                        </TextField>
+                     </graphic>
+                     <padding>
+                        <Insets bottom="-20.0" left="-20.0" right="5.0" top="-20.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
    </children>

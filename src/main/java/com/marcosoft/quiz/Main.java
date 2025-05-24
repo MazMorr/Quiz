@@ -25,9 +25,9 @@ public class Main extends Application {
 	@Autowired
 	private static SpringFXMLLoader springFXMLLoader;
 
-	@Getter
-	private static Stage primaryStage;
+	public static Stage primaryStage;
 	private static Scene scene;
+
 
     public static String getBaseDirectory() {
         try {

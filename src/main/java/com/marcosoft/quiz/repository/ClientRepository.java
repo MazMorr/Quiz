@@ -15,21 +15,31 @@ public interface ClientRepository extends CrudRepository<Client, Integer> {
 
     @Transactional
     @Modifying
-    @Query("update Client c set c.modoPantalla = ?1 where c.id = ?2")
-    int updateModoPantallaById(int modoPantalla, int id);
+    @Query("update Client c set c.windowMode = ?1 where c.id = ?2")
+    int updateWindowModeById(int windowMode, int id);
 
     @Transactional
     @Modifying
-    @Query("update Client c set c.resolucion = ?1 where c.id = ?2")
-    int updateResolucionById(String resolucion, int id);
+    @Query("update Client c set c.resolution = ?1 where c.id = ?2")
+    int updateResolutionById(String resolution, int id);
 
     @Transactional
     @Modifying
-    @Query("update Client c set c.rutaCarpetas = ?1 where c.id = ?2")
-    int updateRutaCarpetasById(String rutaCarpetas, int id);
+    @Query("update Client c set c.folderPath = ?1 where c.id = ?2")
+    int updateFolderPathById(String folderPath, int id);
 
     @Transactional
     @Modifying
-    @Query("update Client c set c.esNuevo = ?1 where c.id = ?2")
-    int updateEsNuevoById(boolean esNuevo, int id);
+    @Query("update Client c set c.isNew = ?1 where c.id = ?2")
+    int updateIsNewById(boolean isNew, int id);
+
+    @Transactional
+    @Modifying
+    @Query("update Client c set c.questionNumber = ?1 where c.id = ?2")
+    int updateQuestionNumberById(int questionNumber, int id);
+
+    @Transactional
+    @Modifying
+    @Query("update Client c set c.thematicNumber = ?1 where c.id = ?2")
+    int updateThematicNumberById(int thematicNumber, int id);
 }

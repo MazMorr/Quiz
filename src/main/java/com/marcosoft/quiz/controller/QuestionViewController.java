@@ -3,6 +3,7 @@ package com.marcosoft.quiz.controller;
 import com.marcosoft.quiz.model.Points;
 import com.marcosoft.quiz.model.ThematicState;
 import com.marcosoft.quiz.services.impl.ClientServiceImpl;
+import com.marcosoft.quiz.utils.DirectoriesCreator;
 import com.marcosoft.quiz.utils.SceneSwitcher;
 import com.marcosoft.quiz.utils.SoundPlayer;
 import javafx.application.Platform;
@@ -37,6 +38,8 @@ public class QuestionViewController {
     @Autowired
     private SceneSwitcher sceneSwitcher;
     @Autowired
+    private DirectoriesCreator directoriesCreator;
+    @Autowired
     private Points points;
     @Autowired
     private ThematicState thematicState;
@@ -58,16 +61,15 @@ public class QuestionViewController {
     private List<String> answers = new ArrayList<>();
     private int currentQuestionIndex = 0;
 
-    // ======================= //
-    // Inicialización          //
-    // ======================= //
+    // =======================
+    //  Inicialización
+    // =======================
 
     @FXML
     private void initialize() {
         loadQuestionsAndAnswersFromThematic();
         initNodes();
         initKeyboardControls();
-
 
         if (questions != null && !questions.isEmpty()) {
             displayCurrentQuestion();
@@ -79,6 +81,7 @@ public class QuestionViewController {
     private void initNodes() {
         if (txtBlueTeam != null && txtRedTeam != null && txtGreenTeam != null && txtPurpleTeam != null) {
             points.refreshPoints(txtBlueTeam, txtRedTeam, txtGreenTeam, txtPurpleTeam);
+            txtTotalQuestion.setText(directoriesCreator.getQuestionsPerThematic()+"");
         } else {
             System.err.println("Los nodos @FXML no están inicializados");
         }
@@ -192,7 +195,7 @@ public class QuestionViewController {
     }
 
     private int getCorrectAnswerForCurrentQuestion() {
-        String thematicPath = clientService.getClientById(1).getRutaCarpetas() + thematicState.getActualThematic();
+        String thematicPath = clientService.getClientById(1).getFolderPath() + thematicState.getActualThematic();
         String questionPath = thematicPath + "/Pregunta" + (currentQuestionIndex + 1) + "/NúmeroRespuestaCorrecta.txt";
         File correctAnswerFile = new File(questionPath);
 
@@ -223,15 +226,8 @@ public class QuestionViewController {
     // Imágenes
     // =======================
 
-    public void adjustImage() {
-        double paneWidth = questionPane.getWidth();
-        double paneHeight = questionPane.getHeight();
-        questionImg.setFitWidth(paneWidth);
-        questionImg.setFitHeight(paneHeight);
-    }
-
     private void loadChiviImageForCurrentQuestion() {
-        String thematicPath = clientService.getClientById(1).getRutaCarpetas() + thematicState.getActualThematic();
+        String thematicPath = clientService.getClientById(1).getFolderPath() + thematicState.getActualThematic();
         String chiviImagePath = thematicPath + "/ChiviTemática/chivi.png";
         File chiviImageFile = new File(chiviImagePath);
 
@@ -244,7 +240,7 @@ public class QuestionViewController {
     }
 
     private void loadQuestionImageOrThematicImage() {
-        String thematicPath = clientService.getClientById(1).getRutaCarpetas() + thematicState.getActualThematic();
+        String thematicPath = clientService.getClientById(1).getFolderPath() + thematicState.getActualThematic();
         String questionPath = thematicPath + "/Pregunta" + (currentQuestionIndex + 1);
 
         String[] exts = {".png", ".jpg", ".jpeg", ".gif"};
@@ -275,13 +271,13 @@ public class QuestionViewController {
     // =======================
 
     private void loadQuestionsAndAnswersFromThematic() {
-        String thematicPath = clientService.getClientById(1).getRutaCarpetas() + thematicState.getActualThematic();
+        String thematicPath = clientService.getClientById(1).getFolderPath() + thematicState.getActualThematic();
 
         questions.clear();
         answers.clear();
         currentQuestionIndex = 0;
 
-        for (int i = 1; i <= 6; i++) {
+        for (int i = 1; i <= directoriesCreator.getQuestionsPerThematic(); i++) {
             String questionPath = thematicPath + "/Pregunta" + i;
 
             // Pregunta
@@ -296,37 +292,38 @@ public class QuestionViewController {
                     }
                 } catch (IOException e) {
                     System.err.println("Error al leer el archivo de la pregunta: " + questionFile.getAbsolutePath());
-                    e.printStackTrace();
                 }
             } else {
                 System.err.println("El archivo de la pregunta no existe: " + questionFile.getAbsolutePath());
             }
 
             // Respuestas
-            for (int j = 1; j <= 3; j++) {
-                File answerFile = new File(questionPath + "/Respuesta" + j + ".txt");
-                if (answerFile.exists()) {
-                    try (BufferedReader reader = new BufferedReader(new FileReader(answerFile))) {
-                        String answer = reader.readLine();
-                        if (answer != null && !answer.isBlank()) {
-                            answers.add(answer);
-                        } else {
-                            answers.add("Respuesta no disponible");
-                            System.err.println("El archivo de la respuesta está vacío: " + answerFile.getAbsolutePath());
-                        }
-                    } catch (IOException e) {
-                        answers.add("Respuesta no disponible");
-                        System.err.println("Error al leer el archivo de la respuesta: " + answerFile.getAbsolutePath());
-                        e.printStackTrace();
-                    }
-                } else {
-                    answers.add("Respuesta no disponible");
-                    System.err.println("El archivo de la respuesta no existe: " + answerFile.getAbsolutePath());
-                }
-            }
+            loadAnswers(questionPath);
         }
     }
 
+    private void loadAnswers(String questionPath) {
+        for (int j = 1; j <= 3; j++) {
+            File answerFile = new File(questionPath + "/Respuesta" + j + ".txt");
+            if (answerFile.exists()) {
+                try (BufferedReader reader = new BufferedReader(new FileReader(answerFile))) {
+                    String answer = reader.readLine();
+                    if (answer != null && !answer.isBlank()) {
+                        answers.add(answer);
+                    } else {
+                        answers.add("Respuesta no disponible");
+                        System.err.println("El archivo de la respuesta está vacío: " + answerFile.getAbsolutePath());
+                    }
+                } catch (IOException e) {
+                    answers.add("Respuesta no disponible");
+                    System.err.println("Error al leer el archivo de la respuesta: " + answerFile.getAbsolutePath());
+                }
+            } else {
+                answers.add("Respuesta no disponible");
+                System.err.println("El archivo de la respuesta no existe: " + answerFile.getAbsolutePath());
+            }
+        }
+    }
     // =======================
     // Puntos de los equipos
     // =======================
@@ -351,8 +348,11 @@ public class QuestionViewController {
         updateTeamPoints(event, points::getBlueTeamPoints, points::setBlueTeamPoints, txtBlueTeam);
     }
 
-    private void updateTeamPoints(MouseEvent event, java.util.function.Supplier<Integer> getter,
-                                  java.util.function.Consumer<Integer> setter, Label label) {
+    private void updateTeamPoints(MouseEvent event,
+                                  java.util.function.Supplier<Integer> getter,
+                                  java.util.function.Consumer<Integer> setter,
+                                  Label label) {
+
         if (event.getButton() == MouseButton.PRIMARY) {
             setter.accept(getter.get() + 1);
         } else if (event.getButton() == MouseButton.SECONDARY && getter.get() != 0) {

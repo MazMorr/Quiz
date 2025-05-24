@@ -12,8 +12,8 @@ public class ClientServiceImpl implements ClientService {
 
     private final ClientRepository clientRepository;
 
-    public ClientServiceImpl(ClientRepository clientRepository){
-        this.clientRepository= clientRepository;
+    public ClientServiceImpl(ClientRepository clientRepository) {
+        this.clientRepository = clientRepository;
     }
 
     @Override
@@ -42,22 +42,32 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public int updateResolucionById(String resolucion, int id) {
-        return clientRepository.updateResolucionById(resolucion, id);
+    public int updateResolucionById(String resolution, int id) {
+        return clientRepository.updateResolutionById(resolution, id);
     }
 
     @Override
-    public int updateEsNuevoById(boolean esNuevo, int id) {
-        return clientRepository.updateEsNuevoById(esNuevo, id);
+    public int updateEsNuevoById(boolean isNew, int id) {
+        return clientRepository.updateIsNewById(isNew, id);
     }
 
     @Override
-    public int updateRutaCarpetasById(String rutaCarpetas, int id) {
-        return clientRepository.updateRutaCarpetasById(rutaCarpetas, id);
+    public int updateRutaCarpetasById(String folderPath, int id) {
+        return clientRepository.updateFolderPathById(folderPath, id);
     }
 
     @Override
-    public int updateModoPantallaById(int modoPantalla, int id) {
-        return clientRepository.updateModoPantallaById(modoPantalla,id);
+    public int updateModoPantallaById(int windowMode, int id) {
+        return clientRepository.updateWindowModeById(windowMode, id);
+    }
+
+    @Override
+    public int updateQuestionNumberById(int questionNumber, int id) {
+        return clientRepository.updateQuestionNumberById(questionNumber, id);
+    }
+
+    @Override
+    public int updateThematicNumberById(int thematicNumber, int id) {
+        return clientRepository.updateThematicNumberById(thematicNumber, id);
     }
 }

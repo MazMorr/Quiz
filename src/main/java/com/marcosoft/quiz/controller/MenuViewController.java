@@ -24,75 +24,59 @@ import java.io.IOException;
 @Controller
 public class MenuViewController {
 
-    @Autowired
-    private DatabaseInitializer databaseInitializer;
-    @Autowired
-    private ClientServiceImpl clientServiceImpl;
-    @Autowired
-    private Points points;
-    @Autowired
-    private SceneSwitcher sceneSwitcher;
-    @Autowired
-    private DirectoriesCreator directoriesCreator;
-    @Autowired
-    private SoundPlayer soundPlayer;
-    @Autowired
-    private ThematicState thematicState;
-    @Autowired
-    private PersonalizedAlerts personalizedAlerts;
+    // =======================
+    // Inyección de dependencias y nodos FXML
+    // =======================
 
-    @FXML
-    private Button btnQuit, btnStart, btnConfiguration;
-    @FXML
-    private Label  txtVersion;
+    @Autowired private DatabaseInitializer databaseInitializer;
+    @Autowired private ClientServiceImpl clientServiceImpl;
+    @Autowired private Points points;
+    @Autowired private SceneSwitcher sceneSwitcher;
+    @Autowired private DirectoriesCreator directoriesCreator;
+    @Autowired private SoundPlayer soundPlayer;
+    @Autowired private ThematicState thematicState;
+    @Autowired private PersonalizedAlerts personalizedAlerts;
+
+    @FXML private Button btnQuit, btnStart, btnConfiguration;
+    @FXML private Label txtVersion;
+
+    // =======================
+    // Inicialización
+    // =======================
 
     @FXML
     public void initialize() {
-        txtVersion.setText("0.9.9b");
-
+        txtVersion.setText("0.9.91b");
         databaseInitializer.init();
         restartPointsAndThematics();
         createClientIfDoesNotExists();
-
         initKeyboardEvents();
-
         directoriesCreator.createAllDirectoriesForTheQuiz();
         // soundPlayer.playMusic(clientServiceImpl.getClientById(1).getRutaCarpetas()+"/musica.mp3");
     }
-    // initConfigurations();
+
     private void createClientIfDoesNotExists() {
         if (!clientServiceImpl.existsClientByClientId(1)) {
-            Client client = new Client(1, "1280x700", 1, true, DirectoriesCreator.getBasePath());
+            Client client = new Client(1, "1280x700", 1, true, DirectoriesCreator.getBasePath(), 6, 4);
             clientServiceImpl.save(client);
         }
     }
 
-    private void initConfigurations() {
-        //Set FullScreen by Configuration stored in Database
-        if (clientServiceImpl.getClientById(1).getModoPantalla() == 2) {
-            Main.getPrimaryStage().setFullScreen(true);
-        } else if (clientServiceImpl.getClientById(1).getModoPantalla() == 1) {
-            Main.getPrimaryStage().setFullScreen(false);
-        }
-        //Set Resolution by configuration stored in database
-        if (clientServiceImpl.getClientById(1).getResolucion().equals("1280x700")) {
-            Main.getPrimaryStage().setWidth(1280);
-            Main.getPrimaryStage().setHeight(700);
-        }
-    }
-
     private void initKeyboardEvents() {
-        // Configurar eventos de teclado después de que la escena esté lista
         Platform.runLater(() -> {
             if (btnQuit.getScene() != null) {
                 btnQuit.getScene().setOnKeyPressed(event -> {
                     if (event.getCode() == KeyCode.CONTROL) {
-                        Main.getPrimaryStage().setFullScreen(true);
+                        Main.primaryStage.setFullScreen(true);
                     }
                 });
             }
         });
     }
+
+    // =======================
+    // Navegación y acciones de UI
+    // =======================
 
     @FXML
     public void quit(ActionEvent actionEvent) {
@@ -103,16 +87,13 @@ public class MenuViewController {
     @FXML
     public void switchToThematicSelectionView(ActionEvent actionEvent) {
         try {
-            // Validar configuración de preguntas, respuestas, nombres de temáticas e imágenes
             if (validateConfiguration()) {
-                // Cambiar a la vista de selección de temáticas si todo está correcto
                 sceneSwitcher.setRootWithEvent(actionEvent, "/thematicSelectionView.fxml");
             } else {
-                // Mostrar un mensaje de error si hay problemas en la configuración
-                personalizedAlerts.showError("Hay problemas en la configuración. Por favor, revisa los detalles y corrige los errores.");
+                personalizedAlerts.showError("Error", "Problema de Configuración", "Hay problemas en la configuración. Por favor, revisa los detalles y corrige los errores.");
             }
         } catch (IOException e) {
-            personalizedAlerts.showError("Error al cambiar a la vista de selección de temáticas: " + e.getMessage());
+            personalizedAlerts.showError("Error", "Problema en cambio de Ventana", "Error al cambiar a la vista de selección de temáticas: " + e.getMessage());
         }
     }
 
@@ -121,21 +102,22 @@ public class MenuViewController {
         sceneSwitcher.setRootWithEvent(actionEvent, "/configurationView.fxml");
     }
 
+    // =======================
+    // Reinicio de puntos y temáticas
+    // =======================
+
     public void restartPointsAndThematics() {
         points.setGreenTeamPoints(0);
         points.setBlueTeamPoints(0);
         points.setRedTeamPoints(0);
         points.setPurpleTeamPoints(0);
-        thematicState.setThematic1selected(false);
-        thematicState.setThematic2selected(false);
-        thematicState.setThematic3selected(false);
-        thematicState.setThematic4selected(false);
+        thematicState.reset();
         thematicState.setThematicsSelectedCounter(0);
     }
 
-    public void restartThematics() {
-
-    }
+    // =======================
+    // Validación de configuración
+    // =======================
 
     /**
      * Valida que todas las preguntas, respuestas, nombres de temáticas e imágenes estén configurados correctamente.
@@ -147,64 +129,88 @@ public class MenuViewController {
         StringBuilder errorMessage = new StringBuilder("Se encontraron los siguientes problemas:\n");
         String basePath = DirectoriesCreator.getBasePath();
 
-        // Validar cada temática
-        for (int thematicIndex = 1; thematicIndex <= 4; thematicIndex++) { // Cambia 4 por el número total de temáticas
+        for (int thematicIndex = 1; thematicIndex <= 4; thematicIndex++) {
             String thematicPath = basePath + "/Temática" + thematicIndex;
 
-            // Validar nombre de la temática
-            File nameFile = new File(thematicPath + "/NombreTemática/nombre.txt");
-            if (!nameFile.exists() || nameFile.length() == 0) {
-                errorMessage.append("- La temática ").append(thematicIndex).append(" no tiene un nombre configurado correctamente.\n");
+            if (!isThematicNameValid(thematicPath)) {
+                appendThematicNameError(errorMessage, thematicIndex);
                 allValid = false;
             }
 
-            // Validar imagen de la temática
-            File imageFile = new File(thematicPath + "/ImagenTemática/imagen.png");
-            if (!imageFile.exists()) {
-                errorMessage.append("- La temática ").append(thematicIndex).append(" no tiene una imagen configurada.\n");
+            if (!isThematicImageValid(thematicPath)) {
+                appendThematicImageError(errorMessage, thematicIndex);
                 allValid = false;
             }
 
-            // Validar preguntas y respuestas
-            for (int questionIndex = 1; questionIndex <= 6; questionIndex++) { // Cambia 6 por el número de preguntas por temática
+            for (int questionIndex = 1; questionIndex <= 6; questionIndex++) {
                 String questionPath = thematicPath + "/Pregunta" + questionIndex;
 
-                // Validar archivo de la pregunta
-                File questionFile = new File(questionPath + "/Pregunta.txt");
-                if (!questionFile.exists() || questionFile.length() == 0) {
-                    errorMessage.append("- La temática ").append(thematicIndex).append(", pregunta ").append(questionIndex).append(" no tiene un archivo de pregunta válido.\n");
+                if (!isQuestionFileValid(questionPath)) {
+                    appendQuestionFileError(errorMessage, thematicIndex, questionIndex);
                     allValid = false;
                 }
 
-                // Validar archivo de la respuesta correcta
-                File correctAnswerFile = new File(questionPath + "/NúmeroRespuestaCorrecta.txt");
-                if (!correctAnswerFile.exists()) {
-                    errorMessage.append("- La temática ").append(thematicIndex).append(", pregunta ").append(questionIndex).append(" no tiene configurado el archivo NúmeroRespuestaCorrecta.txt.\n");
+                String correctAnswerError = validateCorrectAnswerFile(questionPath, thematicIndex, questionIndex);
+                if (correctAnswerError != null) {
+                    errorMessage.append(correctAnswerError);
                     allValid = false;
-                } else {
-                    try (BufferedReader reader = new BufferedReader(new FileReader(correctAnswerFile))) {
-                        String line = reader.readLine();
-                        int correctAnswer = Integer.parseInt(line.trim());
-                        if (correctAnswer < 1 || correctAnswer > 3) {
-                            errorMessage.append("- La temática ").append(thematicIndex).append(", pregunta ").append(questionIndex).append(" tiene un valor inválido en NúmeroRespuestaCorrecta.txt: ").append(line).append("\n");
-                            allValid = false;
-                        }
-                    } catch (IOException | NumberFormatException e) {
-                        errorMessage.append("- Error al leer el archivo NúmeroRespuestaCorrecta.txt para la temática ").append(thematicIndex).append(", pregunta ").append(questionIndex).append(": ").append(e.getMessage()).append("\n");
-                        allValid = false;
-                    }
                 }
             }
         }
 
-        // Mostrar el mensaje de error si hay problemas
         if (!allValid) {
-            personalizedAlerts.showError(errorMessage.toString());
+            personalizedAlerts.showError("Error", "Validación de Archivos", errorMessage.toString());
         }
 
         return allValid;
     }
 
+    private boolean isThematicNameValid(String thematicPath) {
+        File nameFile = new File(thematicPath + "/NombreTemática/nombre.txt");
+        return nameFile.exists() && nameFile.length() > 0;
+    }
 
+    private boolean isThematicImageValid(String thematicPath) {
+        File imageFile = new File(thematicPath + "/ImagenTemática/imagen.png");
+        return imageFile.exists();
+    }
 
+    private boolean isQuestionFileValid(String questionPath) {
+        File questionFile = new File(questionPath + "/Pregunta.txt");
+        return questionFile.exists() && questionFile.length() > 0;
+    }
+
+    private String validateCorrectAnswerFile(String questionPath, int thematicIndex, int questionIndex) {
+        File correctAnswerFile = new File(questionPath + "/NúmeroRespuestaCorrecta.txt");
+        if (!correctAnswerFile.exists()) {
+            return "- La temática " + thematicIndex + ", pregunta " + questionIndex + " no tiene configurado el archivo NúmeroRespuestaCorrecta.txt.\n";
+        } else {
+            try (BufferedReader reader = new BufferedReader(new FileReader(correctAnswerFile))) {
+                String line = reader.readLine();
+                int correctAnswer = Integer.parseInt(line.trim());
+                if (correctAnswer < 1 || correctAnswer > 3) {
+                    return "- La temática " + thematicIndex + ", pregunta " + questionIndex + " tiene un valor inválido en NúmeroRespuestaCorrecta.txt: " + line + "\n";
+                }
+            } catch (IOException | NumberFormatException e) {
+                return "- Error al leer el archivo NúmeroRespuestaCorrecta.txt para la temática " + thematicIndex + ", pregunta " + questionIndex + ": " + e.getMessage() + "\n";
+            }
+        }
+        return null;
+    }
+
+    // =======================
+    // Métodos auxiliares para mensajes de error
+    // =======================
+
+    private void appendThematicNameError(StringBuilder errorMessage, int thematicIndex) {
+        errorMessage.append("- La temática ").append(thematicIndex).append(" no tiene un nombre configurado correctamente.\n");
+    }
+
+    private void appendThematicImageError(StringBuilder errorMessage, int thematicIndex) {
+        errorMessage.append("- La temática ").append(thematicIndex).append(" no tiene una imagen configurada.\n");
+    }
+
+    private void appendQuestionFileError(StringBuilder errorMessage, int thematicIndex, int questionIndex) {
+        errorMessage.append("- La temática ").append(thematicIndex).append(", pregunta ").append(questionIndex).append(" no tiene un archivo de pregunta válido.\n");
+    }
 }

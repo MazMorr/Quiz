@@ -4,23 +4,39 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class ThematicState {
 
     @Getter
     private String actualThematic;
-    @Setter
-    @Getter
-    private int thematicsSelectedCounter = 0;
-    @Getter
-    @Setter
-    private boolean isThematic1selected = false, isThematic2selected = false, isThematic3selected = false, isThematic4selected = false;
 
-    public void actualThematic(String thematicName) {
+    @Getter
+    @Setter
+    private int thematicsSelectedCounter = 0;
+
+    // Nuevo: conjunto de temáticas seleccionadas
+    @Getter
+    private Set<String> selectedThematics = new HashSet<>();
+
+    public void setActualThematic(String thematicName) {
         actualThematic = "/" + thematicName;
+    }
+
+    public void selectThematic(String thematicName) {
+        selectedThematics.add(thematicName);
+        thematicsSelectedCounter = selectedThematics.size();
+    }
+
+    public boolean isThematicSelected(String thematicName) {
+        return selectedThematics.contains(thematicName);
+    }
+
+    public void reset() {
+        selectedThematics.clear();
+        thematicsSelectedCounter = 0;
+        actualThematic = null;
     }
 }
