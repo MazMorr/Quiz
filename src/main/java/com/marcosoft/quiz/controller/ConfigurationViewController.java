@@ -3,6 +3,7 @@ package com.marcosoft.quiz.controller;
 import com.marcosoft.quiz.Main;
 import com.marcosoft.quiz.domain.Client;
 import com.marcosoft.quiz.services.impl.ClientServiceImpl;
+import com.marcosoft.quiz.utils.DirectoriesCreator;
 import com.marcosoft.quiz.utils.SceneSwitcher;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -15,6 +16,9 @@ import org.springframework.stereotype.Controller;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * The type Configuration view controller.
+ */
 @Controller
 public class ConfigurationViewController {
 
@@ -37,16 +41,26 @@ public class ConfigurationViewController {
     private ClientServiceImpl clientService;
     @Autowired
     private SceneSwitcher sceneSwitcher;
+    @Autowired
+    private DirectoriesCreator directoriesCreator;
 
-    Client client = clientService.getClientById(1);
+
+    /**
+     * The Client.
+     */
+    Client client;
 
 
     // =======================
     // Inicialización de la vista
     // =======================
 
+    /**
+     * Initialize.
+     */
     @FXML
     void initialize() {
+        client = clientService.getClientById(1);
         txtPath.setText(client.getFolderPath());
         initQuestionAndThematicLabel();
         initWindowModeConfig();
@@ -120,18 +134,33 @@ public class ConfigurationViewController {
     // Configuración de pantalla y resolución
     // =======================
 
+    /**
+     * Sets full screen.
+     *
+     * @param event the event
+     */
     @FXML
     public void setFullScreen(Event event) {
         clientService.updateModoPantallaById(2, 1);
         Main.primaryStage.setFullScreen(true);
     }
 
+    /**
+     * Sets windows.
+     *
+     * @param event the event
+     */
     @FXML
     public void setWindows(Event event) {
         clientService.updateModoPantallaById(1, 1);
         Main.primaryStage.setFullScreen(false);
     }
 
+    /**
+     * Sets 1920 x 1080.
+     *
+     * @param event the event
+     */
     @FXML
     public void set1920x1080(Event event) {
         clientService.updateResolucionById("1920x1080", 1);
@@ -139,6 +168,11 @@ public class ConfigurationViewController {
         Main.primaryStage.setWidth(1920);
     }
 
+    /**
+     * Sets 1280 x 720.
+     *
+     * @param event the event
+     */
     @FXML
     public void set1280x720(Event event) {
         clientService.updateResolucionById("1280x720", 1);
@@ -146,6 +180,11 @@ public class ConfigurationViewController {
         Main.primaryStage.setWidth(1280);
     }
 
+    /**
+     * Sets 1000 x 600.
+     *
+     * @param event the event
+     */
     @FXML
     public void set1000x600(Event event) {
         clientService.updateResolucionById("1000x660", 1);
@@ -154,28 +193,52 @@ public class ConfigurationViewController {
     }
 
     private void updateQuestionNumber(int number) {
-        txtQuestionQuantity.setText(number + "");
+        txtQuestionQuantity.setText(String.valueOf(number));
         clientService.updateQuestionNumberById(Integer.parseInt(txtQuestionQuantity.getText()), 1);
     }
 
+    /**
+     * Sets question 10.
+     *
+     * @param actionEvent the action event
+     */
     @FXML
     public void setQuestion10(ActionEvent actionEvent) {
         updateQuestionNumber(10);
+        directoriesCreator.createAllDirectoriesForTheQuiz();
     }
 
+    /**
+     * Sets question 8.
+     *
+     * @param actionEvent the action event
+     */
     @FXML
     public void setQuestion8(ActionEvent actionEvent) {
         updateQuestionNumber(8);
+        directoriesCreator.createAllDirectoriesForTheQuiz();
     }
 
+    /**
+     * Sets question 6.
+     *
+     * @param actionEvent the action event
+     */
     @FXML
     public void setQuestion6(ActionEvent actionEvent) {
         updateQuestionNumber(6);
+        directoriesCreator.createAllDirectoriesForTheQuiz();
     }
 
+    /**
+     * Sets question 4.
+     *
+     * @param actionEvent the action event
+     */
     @FXML
     public void setQuestion4(ActionEvent actionEvent) {
         updateQuestionNumber(4);
+        directoriesCreator.createAllDirectoriesForTheQuiz();
     }
 
     private void updateThematicNumber(int number) {
@@ -183,23 +246,47 @@ public class ConfigurationViewController {
         clientService.updateThematicNumberById(Integer.parseInt(txtThematicQuantity.getText()), 1);
     }
 
+    /**
+     * Sets thematic 10.
+     *
+     * @param actionEvent the action event
+     */
     @FXML
     public void setThematic10(ActionEvent actionEvent) {
         updateThematicNumber(10);
+        directoriesCreator.createAllDirectoriesForTheQuiz();
     }
 
+    /**
+     * Sets thematic 8.
+     *
+     * @param actionEvent the action event
+     */
     @FXML
     public void setThematic8(ActionEvent actionEvent) {
         updateThematicNumber(8);
+        directoriesCreator.createAllDirectoriesForTheQuiz();
     }
 
+    /**
+     * Sets thematic 6.
+     *
+     * @param actionEvent the action event
+     */
     @FXML
     public void setThematic6(ActionEvent actionEvent) {
         updateThematicNumber(6);
+        directoriesCreator.createAllDirectoriesForTheQuiz();
     }
 
+    /**
+     * Sets thematic 4.
+     *
+     * @param actionEvent the action event
+     */
     @FXML
     public void setThematic4(ActionEvent actionEvent) {
         updateThematicNumber(4);
+        directoriesCreator.createAllDirectoriesForTheQuiz();
     }
 }

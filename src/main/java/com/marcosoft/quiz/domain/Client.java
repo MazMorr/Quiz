@@ -7,12 +7,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.IdGeneratorType;
 
+/**
+ * The type Client.
+ */
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "ConfiguracionCliente")
+@Table(name = "Configuracion_Cliente")
 public class Client {
 
     @Id

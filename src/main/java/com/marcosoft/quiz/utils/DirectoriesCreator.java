@@ -14,13 +14,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Directories creator.
+ */
 @Component
 public class DirectoriesCreator {
 
     // Ruta base relativa al ejecutable
     private final String BASE_PATH = getBasePath();
 
-    // Configuración dinámica
+    /**
+     * The Client service.
+     */
     @Autowired
     ClientServiceImpl clientService;
 
@@ -31,17 +36,37 @@ public class DirectoriesCreator {
     @Getter
     private int questionsPerThematic = 6; // Valor por defecto
 
+
+    /**
+     * Gets base path.
+     *
+     * @return the base path
+     */
     public static String getBasePath() {
         try {
-            // Obtiene la ruta del ejecutable (JAR) o del directorio de trabajo
-            return new File(DirectoriesCreator.class.getProtectionDomain().getCodeSource().getLocation().toURI())
-                    .getParentFile()
-                    .getAbsolutePath() + "/ArchivosQuiz";
+            // Intenta obtener la ruta del ejecutable (JAR) o del directorio de trabajo
+            java.net.URI uri = DirectoriesCreator.class.getProtectionDomain().getCodeSource().getLocation().toURI();
+            File baseFile;
+            try {
+                baseFile = new File(uri);
+                if (!baseFile.isDirectory()) {
+                    baseFile = baseFile.getParentFile();
+                }
+            } catch (IllegalArgumentException e) {
+                // Si el URI no es jerárquico (ejecución desde jar spring-boot), usa user.dir
+                baseFile = new File(System.getProperty("user.dir"));
+            }
+            return new File(baseFile, "ArchivosQuiz").getAbsolutePath();
         } catch (Exception e) {
             throw new RuntimeException("No se pudo determinar la ruta base del ejecutable.", e);
         }
     }
 
+    /**
+     * Create directory.
+     *
+     * @param path the path
+     */
     public void createDirectory(String path) {
         File file = new File(path);
         if (!file.exists() && file.mkdirs()) {
@@ -51,7 +76,12 @@ public class DirectoriesCreator {
         }
     }
 
+    /**
+     * Create all directories for the quiz.
+     */
     public void createAllDirectoriesForTheQuiz() {
+        thematicCount = clientService.getClientById(1).getThematicNumber();
+        questionsPerThematic = clientService.getClientById(1).getQuestionNumber();
         try {
             // Crear lista de temáticas según configuración
             List<String> thematicPaths = new ArrayList<>();

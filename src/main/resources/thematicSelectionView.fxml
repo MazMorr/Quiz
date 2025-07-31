@@ -62,7 +62,7 @@
                   <Image url="@images/bombardino_cocodrilo.jpg" />
                </image>
             </ImageView>
-            <Label fx:id="txtFirstOption" alignment="CENTER" layoutX="90.0" layoutY="561.0" prefHeight="58.0" prefWidth="380.0" styleClass="title" stylesheets="@styles.css" text="Bombardiro" textFill="#eb0909" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="40.0">
+            <Label fx:id="txtFirstOption" alignment="CENTER" layoutX="90.0" layoutY="561.0" prefHeight="66.0" prefWidth="440.0" styleClass="title" stylesheets="@styles.css" text="Bombardiro" textFill="#eb0909" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="40.0">
                <font>
                   <Font name="System Bold" size="45.0" />
                </font>
@@ -87,7 +87,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label fx:id="txtSecondOption" alignment="CENTER" layoutX="604.0" layoutY="584.0" prefHeight="62.0" prefWidth="380.0" styleClass="title" stylesheets="@styles.css" text="Tralalelo Tralalá" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="40.0">
+            <Label fx:id="txtSecondOption" alignment="CENTER" layoutX="604.0" layoutY="584.0" prefHeight="66.0" prefWidth="440.0" styleClass="title" stylesheets="@styles.css" text="Tralalelo Tralalá" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="40.0">
                <font>
                   <Font name="System Bold" size="45.0" />
                </font>

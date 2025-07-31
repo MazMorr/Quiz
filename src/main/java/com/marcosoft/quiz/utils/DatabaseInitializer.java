@@ -4,9 +4,15 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 
+/**
+ * The type Database initializer.
+ */
 @Component
 public class DatabaseInitializer {
 
+    /**
+     * Init.
+     */
     public void init() {
         // Ruta de la carpeta donde se almacenará la base de datos
         File quizDir = new File("C:/Quiz");

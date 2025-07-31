@@ -28,17 +28,27 @@ public class MenuViewController {
     // Inyección de dependencias y nodos FXML
     // =======================
 
-    @Autowired private DatabaseInitializer databaseInitializer;
-    @Autowired private ClientServiceImpl clientServiceImpl;
-    @Autowired private Points points;
-    @Autowired private SceneSwitcher sceneSwitcher;
-    @Autowired private DirectoriesCreator directoriesCreator;
-    @Autowired private SoundPlayer soundPlayer;
-    @Autowired private ThematicState thematicState;
-    @Autowired private PersonalizedAlerts personalizedAlerts;
+    @Autowired
+    private DatabaseInitializer databaseInitializer;
+    @Autowired
+    private ClientServiceImpl clientServiceImpl;
+    @Autowired
+    private Points points;
+    @Autowired
+    private SceneSwitcher sceneSwitcher;
+    @Autowired
+    private DirectoriesCreator directoriesCreator;
+    @Autowired
+    private SoundPlayer soundPlayer;
+    @Autowired
+    private ThematicState thematicState;
+    @Autowired
+    private PersonalizedAlerts personalizedAlerts;
 
-    @FXML private Button btnQuit, btnStart, btnConfiguration;
-    @FXML private Label txtVersion;
+    @FXML
+    private Button btnQuit, btnStart, btnConfiguration;
+    @FXML
+    private Label txtVersion;
 
     // =======================
     // Inicialización
@@ -46,13 +56,15 @@ public class MenuViewController {
 
     @FXML
     public void initialize() {
-        txtVersion.setText("0.9.91b");
-        databaseInitializer.init();
-        restartPointsAndThematics();
-        createClientIfDoesNotExists();
-        initKeyboardEvents();
-        directoriesCreator.createAllDirectoriesForTheQuiz();
-        // soundPlayer.playMusic(clientServiceImpl.getClientById(1).getRutaCarpetas()+"/musica.mp3");
+        Platform.runLater(() -> {
+            txtVersion.setText("0.9.91b");
+            databaseInitializer.init();
+            restartPointsAndThematics();
+            createClientIfDoesNotExists();
+            initKeyboardEvents();
+            directoriesCreator.createAllDirectoriesForTheQuiz();
+            // soundPlayer.playMusic(clientServiceImpl.getClientById(1).getRutaCarpetas()+"/musica.mp3");
+        });
     }
 
     private void createClientIfDoesNotExists() {
@@ -129,7 +141,9 @@ public class MenuViewController {
         StringBuilder errorMessage = new StringBuilder("Se encontraron los siguientes problemas:\n");
         String basePath = DirectoriesCreator.getBasePath();
 
-        for (int thematicIndex = 1; thematicIndex <= 4; thematicIndex++) {
+        int totalThematics = clientServiceImpl.getClientById(1).getThematicNumber();
+        int totalQuestions = clientServiceImpl.getClientById(1).getQuestionNumber();
+        for (int thematicIndex = 1; thematicIndex <= totalThematics; thematicIndex++) {
             String thematicPath = basePath + "/Temática" + thematicIndex;
 
             if (!isThematicNameValid(thematicPath)) {
@@ -142,7 +156,7 @@ public class MenuViewController {
                 allValid = false;
             }
 
-            for (int questionIndex = 1; questionIndex <= 6; questionIndex++) {
+            for (int questionIndex = 1; questionIndex <= totalQuestions; questionIndex++) {
                 String questionPath = thematicPath + "/Pregunta" + questionIndex;
 
                 if (!isQuestionFileValid(questionPath)) {

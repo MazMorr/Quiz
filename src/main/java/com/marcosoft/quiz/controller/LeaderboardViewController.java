@@ -102,19 +102,24 @@ public class LeaderboardViewController {
                 customizeBarColor(data, colors[originalIdx]);
 
                 // Mostrar el valor encima de la barra
-                Label label = new Label(String.valueOf(teamPoints[originalIdx]));
-                label.setStyle("-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 80; -fx-font-family: \"Mortal Kombat 2\";");
-                // Esperar a que el nodo esté disponible
-                data.nodeProperty().addListener((obs, oldNode, newNode) -> {
-                    if (newNode != null) {
-                        StackPane stack = (StackPane) newNode;
+                if(teamPoints[originalIdx] != 0){
+                    Label label = new Label(String.valueOf(teamPoints[originalIdx]));
+                    label.setStyle("-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 80; -fx-font-family: \"Mortal Kombat 2\";");
+
+                    // Esperar a que el nodo esté disponible
+                    data.nodeProperty().addListener((obs, oldNode, newNode) -> {
+                        if (newNode != null) {
+                            StackPane stack = (StackPane) newNode;
+                            stack.getChildren().add(label);
+                        }
+                    });
+                    if (data.getNode() != null) {
+                        StackPane stack = (StackPane) data.getNode();
                         stack.getChildren().add(label);
                     }
-                });
-                if (data.getNode() != null) {
-                    StackPane stack = (StackPane) data.getNode();
-                    stack.getChildren().add(label);
                 }
+
+
             });
             timeline.getKeyFrames().add(keyFrame);
         }

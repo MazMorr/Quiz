@@ -26,6 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * The type Thematic selection view controller.
+ */
 @Controller
 public class ThematicSelectionViewController {
 
@@ -33,17 +36,31 @@ public class ThematicSelectionViewController {
     // Inyección de dependencias y nodos FXML
     // =======================
 
-    @Autowired private Points points;
-    @Autowired private ThematicState thematicState;
-    @Autowired private ClientServiceImpl clientService;
-    @Autowired private SceneSwitcher sceneSwitcher;
-    @Autowired private PersonalizedAlerts personalizedAlerts;
+    @Autowired
+    private Points points;
+    @Autowired
+    private ThematicState thematicState;
+    @Autowired
+    private ClientServiceImpl clientService;
+    @Autowired
+    private SceneSwitcher sceneSwitcher;
+    @Autowired
+    private PersonalizedAlerts personalizedAlerts;
 
-    @FXML private Label txtFirstOption, txtSecondOption, txtGreenTeam, txtPurpleTeam, txtRedTeam, txtBlueTeam;
-    @FXML private ImageView imgFirstOption, imgSecondOption;
-    @FXML private Button btnFirstOption, btnSecondOption;
+    @FXML
+    private Label txtFirstOption, txtSecondOption, txtGreenTeam, txtPurpleTeam, txtRedTeam, txtBlueTeam;
+    @FXML
+    private ImageView imgFirstOption, imgSecondOption;
+    @FXML
+    private Button btnFirstOption, btnSecondOption;
 
+    /**
+     * The Thematic displayed 1.
+     */
     public String thematicDisplayed1;
+    /**
+     * The Thematic displayed 2.
+     */
     public String thematicDisplayed2;
 
     // Proceso para la voz de Cortana
@@ -59,6 +76,9 @@ public class ThematicSelectionViewController {
         Platform.runLater(this::displayAllTheThematics);
     }
 
+    /**
+     * Sets points.
+     */
     public void setPoints() {
         txtBlueTeam.setText(String.valueOf(points.getBlueTeamPoints()));
         txtGreenTeam.setText(String.valueOf(points.getGreenTeamPoints()));
@@ -101,7 +121,7 @@ public class ThematicSelectionViewController {
             System.out.println("No quedan temáticas disponibles. Cambiando a la vista del leaderboard...");
             sceneSwitcher.setRoot(btnFirstOption, "/leaderboardView.fxml");
         } catch (IOException e) {
-            personalizedAlerts.showError("Error","Cambio de ventana","Error al cambiar a la vista del leaderboard: " + e.getMessage());
+            personalizedAlerts.showError("Error", "Cambio de ventana", "Error al cambiar a la vista del leaderboard: " + e.getMessage());
         }
     }
 
@@ -110,20 +130,18 @@ public class ThematicSelectionViewController {
         thematicState.setActualThematic(remainingThematic);
 
         try {
-            System.out.println("Solo queda una temática disponible: " + remainingThematic);
             String contentText = cortanaStyleMessage(remainingThematic);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText("Selección automática de temática");
-            alert.setContentText(contentText);
-            alert.setTitle("Cortana");
             speakWithCortanaVoice(contentText);
-
+            Alert alert= new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText(contentText);
+            alert.setHeaderText("Selección de Temáticas");
+            alert.setTitle("Cortana");
             alert.showAndWait();
             stopCortanaVoice();
 
             sceneSwitcher.setRoot(btnFirstOption, "/questionView.fxml");
         } catch (IOException e) {
-            personalizedAlerts.showError("Error","cambio de Ventana","Error al cambiar a la vista de preguntas: " + e.getMessage());
+            personalizedAlerts.showError("Error", "cambio de Ventana", "Error al cambiar a la vista de preguntas: " + e.getMessage());
         }
     }
 
@@ -143,7 +161,6 @@ public class ThematicSelectionViewController {
         btnSecondOption.setDisable(true);
 
         Timeline timeline = new Timeline();
-        System.out.println("Inicializando selección de temáticas...");
 
         for (int i = 0; i < 25; i++) {
             KeyFrame keyFrame = new KeyFrame(Duration.seconds(i * 0.1), e -> {
@@ -154,7 +171,7 @@ public class ThematicSelectionViewController {
                     imgFirstOption.setImage(loadThematicImage(thematics[0]));
                     imgSecondOption.setImage(loadThematicImage(thematics[1]));
                 } catch (Exception ex) {
-                    personalizedAlerts.showError("Error","Selección de Temáticas","Error durante la selección de temáticas: " + ex.getMessage());
+                    personalizedAlerts.showError("Error", "Selección de Temáticas", "Error durante la selección de temáticas: " + ex.getMessage());
                 }
             });
             timeline.getKeyFrames().add(keyFrame);
@@ -176,23 +193,34 @@ public class ThematicSelectionViewController {
                 btnSecondOption.setDisable(false);
 
             } catch (Exception ex) {
-                personalizedAlerts.showError("Error","Finalización de temática","Error al finalizar la selección de temáticas: " + ex.getMessage());
+                personalizedAlerts.showError("Error", "Finalización de temática", "Error al finalizar la selección de temáticas: " + ex.getMessage());
             }
         });
 
         timeline.play();
-        System.out.println("Timeline iniciado.");
     }
 
     // =======================
     // Selección de opciones
     // =======================
 
+    /**
+     * First option selected.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void firstOptionSelected(ActionEvent event) throws IOException {
         selectThematic(thematicDisplayed1, event);
     }
 
+    /**
+     * Second option selected.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void secondOptionSelected(ActionEvent event) throws IOException {
         selectThematic(thematicDisplayed2, event);
@@ -219,6 +247,11 @@ public class ThematicSelectionViewController {
         updateTeamPoints(event, points::getGreenTeamPoints, points::setGreenTeamPoints, txtGreenTeam);
     }
 
+    /**
+     * Upgrade red points.
+     *
+     * @param event the event
+     */
     @FXML
     public void upgradeRedPoints(MouseEvent event) {
         updateTeamPoints(event, points::getRedTeamPoints, points::setRedTeamPoints, txtRedTeam);
@@ -266,10 +299,10 @@ public class ThematicSelectionViewController {
                 }
                 return line;
             } catch (IOException e) {
-                personalizedAlerts.showError("Error","","Error al leer el archivo: " + filePath);
+                personalizedAlerts.showError("Error", "", "Error al leer el archivo: " + filePath);
             }
         } else {
-            personalizedAlerts.showError("Error","","El archivo no existe: " + filePath);
+            personalizedAlerts.showError("Error", "", "El archivo no existe: " + filePath);
         }
         return "Nombre desconocido";
     }
@@ -291,10 +324,7 @@ public class ThematicSelectionViewController {
     // =======================
 
     private String cortanaStyleMessage(String remainingThematic) {
-        return "He analizado todas las opciones disponibles. " +
-                "Como solo queda una temática, procederé a seleccionarla automáticamente: " +
-                readThematicName(remainingThematic) +
-                ". Espero que esta decisión sea de su agrado, Jefe Maestro.";
+        return "Última temática: " + readThematicName(remainingThematic) + ", procederé a seleccionarla automáticamente.";
     }
 
     private void speakWithCortanaVoice(String text) {
